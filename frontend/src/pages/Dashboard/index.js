@@ -28,7 +28,7 @@ export default function Dashboard() {
     }
 
     function handleMeetupDetail(meetup) {
-        history.push('/meetup', { meetup });
+        history.push('/meetup/detail', { meetup });
     }
 
     return (
