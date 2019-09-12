@@ -2,12 +2,11 @@ import { darken } from 'polished';
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    background: #000;
-    padding: 0 30px;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 25px;
 `;
 
 export const Content = styled.div`
-    height: 64px;
     max-width: 900px;
     margin: 0 auto;
     display: flex;
@@ -33,8 +32,13 @@ export const Content = styled.div`
             }
 
             a {
-                margin-top: 3px;
+                margin-top: 5px;
                 color: #999;
+                opacity: 0.8;
+
+                &:hover {
+                    opacity: 1;
+                }
             }
         }
 
