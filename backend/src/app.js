@@ -1,13 +1,12 @@
+import * as Sentry from '@sentry/node';
+import cors from 'cors';
 import 'dotenv/config';
-
 import express from 'express';
+import 'express-async-errors';
 import path from 'path';
 import Youch from 'youch';
-import * as Sentry from '@sentry/node';
-import 'express-async-errors';
-
-import './database';
 import sentryConfig from './config/sentry';
+import './database';
 import routes from './routes';
 
 class App {
@@ -20,9 +19,11 @@ class App {
         this.middlewares();
         this.routes();
         this.exceptionHandler();
+        this.server.use(Sentry.Handlers.errorHandler());
     }
 
     middlewares() {
+        this.server.use(cors());
         this.server.use(express.json());
         this.server.use(express.urlencoded({ extended: false }));
         this.server.use('/files', express.static(path.resolve(__dirname, '..', 'tmp', 'uploads')));
@@ -30,7 +31,6 @@ class App {
 
     routes() {
         this.server.use(routes);
-        this.server.use(Sentry.Handlers.errorHandler());
     }
 
     exceptionHandler() {
