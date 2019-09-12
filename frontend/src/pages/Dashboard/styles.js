@@ -11,7 +11,7 @@ export const Header = styled.header`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 
     strong {
         color: #fff;
@@ -75,6 +75,6 @@ export const Meetups = styled.ul`
     }
 
     li + li {
-        margin-top: 20px;
+        margin-top: 10px;
     }
 `;
