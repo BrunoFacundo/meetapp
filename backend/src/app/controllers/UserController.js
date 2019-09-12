@@ -22,7 +22,7 @@ class UserController {
         });
 
         if (userExists) {
-            return res.status(400).json({ error: 'User already exists.' });
+            return res.status(400).json({ error: 'User already exists' });
         }
 
         const { id, name, email } = await User.create(req.body);
@@ -51,7 +51,7 @@ class UserController {
             });
 
             if (!(await schema.isValid(req.body))) {
-                return res.status(400).json({ error: 'Validation fails.' });
+                return res.status(400).json({ error: 'Validation fails' });
             }
         }
 
@@ -64,7 +64,7 @@ class UserController {
                 const userExists = await User.findOne({ where: { email } });
 
                 if (userExists) {
-                    return res.status(400).json({ error: 'User already exists.' });
+                    return res.status(400).json({ error: 'User already exists' });
                 }
             }
 
