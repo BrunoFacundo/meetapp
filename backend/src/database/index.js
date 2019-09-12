@@ -1,12 +1,10 @@
-import Sequelize from 'sequelize';
 import mongoose from 'mongoose';
-
-import databaseConfig from '../config/database';
-
-import User from '../app/models/User';
+import Sequelize from 'sequelize';
+import File from '../app/models/File';
 import Meetup from '../app/models/Meetup';
 import Subscription from '../app/models/Subscription';
-import File from '../app/models/File';
+import User from '../app/models/User';
+import databaseConfig from '../config/database';
 
 const models = [User, File, Meetup, Subscription];
 

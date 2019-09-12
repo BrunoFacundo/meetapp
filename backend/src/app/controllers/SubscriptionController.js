@@ -1,9 +1,9 @@
 import { Op } from 'sequelize';
-import User from '../models/User';
-import Meetup from '../models/Meetup';
-import Subscription from '../models/Subscription';
 import Queue from '../../lib/Queue';
 import SubscriptionMail from '../jobs/SubscriptionMail';
+import Meetup from '../models/Meetup';
+import Subscription from '../models/Subscription';
+import User from '../models/User';
 
 class SubscriptionController {
     async index(req, res) {

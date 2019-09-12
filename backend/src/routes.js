@@ -1,15 +1,13 @@
 import { Router } from 'express';
 import multer from 'multer';
-import multerConfig from './config/multer';
-
-import UserController from './app/controllers/UserController';
-import SessionController from './app/controllers/SessionController';
-
-import authMiddleware from './app/middlewares/auth';
 import FileController from './app/controllers/FileController';
 import MeetupController from './app/controllers/MeetupController';
 import OrganizingController from './app/controllers/OrganizingController';
+import SessionController from './app/controllers/SessionController';
 import SubscriptionController from './app/controllers/SubscriptionController';
+import UserController from './app/controllers/UserController';
+import authMiddleware from './app/middlewares/auth';
+import multerConfig from './config/multer';
 
 const routes = new Router();
 
