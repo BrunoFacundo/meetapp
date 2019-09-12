@@ -12,15 +12,6 @@ class Database {
     constructor() {
         this.connection = new Sequelize(databaseConfig);
 
-        const { MONGO_HOST, MONGO_PORT, MONGO_NAME } = process.env;
-
-        const mongoURI = `mongodb://${MONGO_HOST}:${MONGO_PORT}/${MONGO_NAME}`;
-
-        this.mongoConnection = mongoose.connect(mongoURI, {
-            useNewUrlParser: true,
-            useFindAndModify: true
-        });
-
         this.init();
         this.associate();
     }
@@ -34,6 +25,15 @@ class Database {
             if (model.associate) {
                 model.associate(this.connection.models);
             }
+        });
+    }
+
+    mongo() {
+        const { MONGO_HOST, MONGO_PORT, MONGO_NAME } = process.env;
+
+        this.mongoConnection = mongoose.connect(`mongodb://${MONGO_HOST}:${MONGO_PORT}/${MONGO_NAME}`, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
         });
     }
 }
