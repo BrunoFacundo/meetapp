@@ -20,10 +20,10 @@ export default function Dashboard({ location }) {
     async function handleCancel(id) {
         try {
             await api.delete(`/meetups/${id}`);
-            toast.success('Meetup cancelada com sucesso.');
+            toast.success('Meetup cancelada com sucesso!');
             history.push('/dashboard');
         } catch (err) {
-            toast.error('Não foi possível cancelar a meetup.');
+            toast.error('Error ao cancelar meetup!');
         }
     }
 
