@@ -36,10 +36,9 @@ export const Content = styled.div`
             a {
                 margin-top: 5px;
                 color: #999;
-                opacity: 0.8;
 
                 &:hover {
-                    opacity: 1;
+                    opacity: 0.8;
                 }
             }
         }

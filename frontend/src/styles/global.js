@@ -22,7 +22,7 @@ export default createGlobalStyle`
 
     *::-webkit-scrollbar-thumb {
         border-radius: 5px;
-        background: #c1c1c1;
+        background: #999;
     }
 
     html,
