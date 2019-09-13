@@ -30,19 +30,21 @@ export default function BannerInput({ name }) {
     }
 
     return (
-        <Container>
-            <input type="file" id="banner" ref={ref} accept="image/*" data-file={file} onChange={handleChange} />
-            <label htmlFor="banner">
-                {file ? (
-                    <img src={file} alt="Banner" />
-                ) : (
-                    <>
-                        <MdCameraAlt size={42} />
-                        <strong>Selecionar imagem</strong>
-                    </>
-                )}
-            </label>
+        <>
+            <Container>
+                <input type="file" id="banner" ref={ref} accept="image/*" data-file={file} onChange={handleChange} />
+                <label htmlFor="banner">
+                    {file ? (
+                        <img src={file} alt="Banner" />
+                    ) : (
+                        <>
+                            <MdCameraAlt size={42} />
+                            <strong>Selecionar imagem</strong>
+                        </>
+                    )}
+                </label>
+            </Container>
             {error && <span>{error}</span>}
-        </Container>
+        </>
     );
 }

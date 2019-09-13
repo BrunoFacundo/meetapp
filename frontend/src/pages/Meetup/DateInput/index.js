@@ -22,24 +22,26 @@ export default function DateInput({ name, placeholder }) {
     }, [ref.current, fieldName]); // eslint-disable-line
 
     function handleChange(date) {
-        setSelected(date);
+        setSelected(date || undefined);
     }
 
     return (
-        <Container>
-            <ReactDatePicker
-                ref={ref}
-                selected={selected}
-                placeholderText={placeholder}
-                onChange={handleChange}
-                locale={pt}
-                showTimeSelect
-                timeFormat="HH:mm"
-                timeIntervals={30}
-                timeCaption="Hora"
-                dateFormat="dd/MM/yyyy 'às' HH:mm"
-            />
+        <>
+            <Container>
+                <ReactDatePicker
+                    ref={ref}
+                    selected={selected}
+                    placeholderText={placeholder}
+                    onChange={handleChange}
+                    locale={pt}
+                    showTimeSelect
+                    timeFormat="HH:mm"
+                    timeIntervals={30}
+                    timeCaption="Hora"
+                    dateFormat="dd/MM/yyyy 'às' HH:mm"
+                />
+            </Container>
             {error && <span>{error}</span>}
-        </Container>
+        </>
     );
 }
