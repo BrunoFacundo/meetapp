@@ -42,28 +42,28 @@ export const Content = styled.div`
             margin: 0 0 10px;
             font-weight: bold;
         }
+    }
+`;
 
-        button {
-            display: flex;
-            align-items: center;
-            background: #f94d6a;
-            font-weight: bold;
-            color: #fff;
-            border: 0;
-            border-radius: 4px;
-            font-size: 16px;
-            transition: background 0.2s;
-            width: fit-content;
-            padding: 10px 20px;
-            align-self: flex-end;
+export const AddButton = styled.button`
+    display: flex;
+    align-items: center;
+    background: #f94d6a;
+    font-weight: bold;
+    color: #fff;
+    border: 0;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: background 0.2s;
+    width: fit-content;
+    padding: 10px 20px;
+    align-self: flex-end;
 
-            &:hover {
-                background: ${darken(0.03, '#f94d6a')};
-            }
+    &:hover {
+        background: ${darken(0.03, '#f94d6a')};
+    }
 
-            svg {
-                margin-right: 5px;
-            }
-        }
+    svg {
+        margin-right: 5px;
     }
 `;

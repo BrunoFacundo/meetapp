@@ -13,7 +13,8 @@ export default function Dashboard({ history }) {
             const response = await api.get('organizing');
             const data = response.data.map(meetup => ({
                 ...meetup,
-                dateFormatted: format(parseISO(meetup.date), "d 'de' MMMM', às ' H'h'", { locale: pt })
+                date: parseISO(meetup.date),
+                dateFormatted: format(parseISO(meetup.date), "d 'de' MMMM', às' H'h'", { locale: pt })
             }));
 
             setMeetups(data);

@@ -2,7 +2,8 @@ import { Form, Input } from '@rocketseat/unform';
 import React from 'react';
 import { MdAddCircleOutline } from 'react-icons/md';
 import BannerInput from './BannerInput';
-import { Container, Content } from './styles';
+import DateInput from './DateInput';
+import { AddButton, Container, Content } from './styles';
 
 export default function Meetup({ location }) {
     const isNew = !location.state || !location.state.meetup;
@@ -16,15 +17,15 @@ export default function Meetup({ location }) {
         <Container>
             <Content>
                 <Form onSubmit={handleSubmit} initialData={meetup}>
-                    <BannerInput name="file" />
+                    <BannerInput name="file.url" />
                     <Input name="title" type="text" placeholder="Título do meetup" />
                     <Input name="description" type="text" placeholder="Descrição completa" multiline />
-                    <Input name="date" type="text" placeholder="Data do meetup" />
+                    <DateInput name="date" placeholder="Data do meetup" />
                     <Input name="location" type="text" placeholder="Localização" />
-                    <button type="submit">
+                    <AddButton type="submit">
                         <MdAddCircleOutline color="#fff" size={24} />
                         Salvar meetup
-                    </button>
+                    </AddButton>
                 </Form>
             </Content>
         </Container>

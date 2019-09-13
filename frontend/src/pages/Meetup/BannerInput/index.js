@@ -4,21 +4,19 @@ import { MdCameraAlt } from 'react-icons/md';
 import { Container } from './styles';
 
 export default function BannerInput({ name }) {
-    const { defaultValue, registerField } = useField('file');
-    const [file, setFile] = useState(null);
-
-    const ref = useRef();
-    const initialValue = defaultValue && defaultValue.url;
+    const ref = useRef(null);
+    const { fieldName, defaultValue, registerField, error } = useField(name);
+    const [file, setFile] = useState(defaultValue);
 
     useEffect(() => {
         if (ref.current) {
             registerField({
-                name,
+                name: fieldName,
                 ref: ref.current,
                 path: 'dataset.file'
             });
         }
-    }, [ref, name]); // eslint-disable-line
+    }, [ref.current, fieldName]); // eslint-disable-line
 
     function handleChange(e) {
         const file = e.target.files && e.target.files.length > 0 ? e.target.files[0] : null;
@@ -35,8 +33,8 @@ export default function BannerInput({ name }) {
         <Container>
             <input type="file" id="banner" ref={ref} accept="image/*" data-file={file} onChange={handleChange} />
             <label htmlFor="banner">
-                {file || initialValue ? (
-                    <img src={file || initialValue} alt="Banner" />
+                {file ? (
+                    <img src={file} alt="Banner" />
                 ) : (
                     <>
                         <MdCameraAlt size={42} />
@@ -44,6 +42,7 @@ export default function BannerInput({ name }) {
                     </>
                 )}
             </label>
+            {error && <span>{error}</span>}
         </Container>
     );
 }
