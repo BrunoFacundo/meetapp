@@ -38,11 +38,11 @@ class MeetupController {
         });
 
         if (!(await schema.isValid(req.body))) {
-            return res.status(400).json({ error: 'Validation fails' });
+            return res.status(400).json({ error: 'Falha na validação dos dados' });
         }
 
         if (isBefore(parseISO(req.body.date), new Date())) {
-            return res.status(400).json({ error: 'Meetup date invalid' });
+            return res.status(400).json({ error: 'Data da meetup inválida' });
         }
 
         const meetup = await Meetup.create({
@@ -74,28 +74,38 @@ class MeetupController {
         });
 
         if (!(await schema.isValid(req.body))) {
-            return res.status(400).json({ error: 'Validation fails' });
+            return res.status(400).json({ error: 'Falha na validação dos dados' });
         }
 
         const user_id = req.userId;
-
         const meetup = await Meetup.findByPk(req.params.id);
 
         if (meetup.user_id !== user_id) {
-            return res.status(401).json({ error: 'Not authorized' });
+            return res.status(401).json({ error: 'Não autorizado' });
         }
 
         if (isBefore(parseISO(req.body.date), new Date())) {
-            return res.status(400).json({ error: 'Meetup date invalid' });
+            return res.status(400).json({ error: 'Data da meetup inválida' });
         }
 
         if (meetup.past) {
-            return res.status(400).json({ error: "Can't update past meetups" });
+            return res.status(400).json({ error: 'Não é possível atualizar meetup passada' });
         }
 
         await meetup.update(req.body);
+        const file = await File.findByPk(req.body.file_id);
 
-        return res.json(meetup);
+        return res.json({
+            id: meetup.id,
+            title: meetup.title,
+            description: meetup.description,
+            location: meetup.location,
+            date: meetup.date,
+            file: {
+                id: file.id,
+                url: file.url
+            }
+        });
     }
 
     async delete(req, res) {
@@ -104,11 +114,11 @@ class MeetupController {
         const meetup = await Meetup.findByPk(req.params.id);
 
         if (meetup.user_id !== user_id) {
-            return res.status(401).json({ error: 'Not authorized' });
+            return res.status(401).json({ error: 'Não autorizado' });
         }
 
         if (meetup.past) {
-            return res.status(400).json({ error: "Can't delete past meetups" });
+            return res.status(400).json({ error: 'Não é possível deletar meetup passada' });
         }
 
         await meetup.destroy();

@@ -23,7 +23,7 @@ export default function BannerInput({ name }) {
         if (file) {
             var reader = new FileReader();
             reader.onload = e => {
-                setFile(e.target.result);
+                setFile(`${file.name}|${e.target.result}`);
             };
             reader.readAsDataURL(file);
         }
@@ -35,7 +35,7 @@ export default function BannerInput({ name }) {
                 <input type="file" id="banner" ref={ref} accept="image/*" data-file={file} onChange={handleChange} />
                 <label htmlFor="banner">
                     {file ? (
-                        <img src={file} alt="Banner" />
+                        <img src={file.includes('|') ? file.split('|')[1] : file} alt="Banner" />
                     ) : (
                         <>
                             <MdCameraAlt size={42} />

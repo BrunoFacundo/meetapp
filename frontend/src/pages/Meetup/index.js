@@ -1,7 +1,10 @@
 import { Form, Input } from '@rocketseat/unform';
+import { format } from 'date-fns';
 import React from 'react';
 import { MdAddCircleOutline } from 'react-icons/md';
+import { toast } from 'react-toastify';
 import * as Yup from 'yup';
+import api from '~/services/api';
 import BannerInput from './BannerInput';
 import DateInput from './DateInput';
 import { AddButton, Container, Content } from './styles';
@@ -16,12 +19,78 @@ const schema = Yup.object().shape({
     location: Yup.string().required('A localizção é obrigatória')
 });
 
-export default function Meetup({ location }) {
+export default function Meetup({ history, location }) {
     const isNew = !location.state || !location.state.meetup;
     const meetup = isNew ? null : location.state.meetup;
 
-    function handleSubmit(data) {
-        console.log(data);
+    function base64toBlob(base64Data) {
+        const sliceSize = 512;
+
+        let [contentType, data] = base64Data.split(';');
+        contentType = contentType.replace('data:', '');
+        data = data.replace('base64,', '');
+
+        let byteCharacters = atob(data);
+        let byteArrays = [];
+
+        for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+            let slice = byteCharacters.slice(offset, offset + sliceSize);
+
+            let byteNumbers = new Array(slice.length);
+            for (let i = 0; i < slice.length; i++) {
+                byteNumbers[i] = slice.charCodeAt(i);
+            }
+
+            byteArrays.push(new Uint8Array(byteNumbers));
+        }
+
+        return new Blob(byteArrays, { type: contentType });
+    }
+
+    async function handleSubmit(data) {
+        if (isNew) {
+            try {
+                const [filename, base64Image] = data.file.url.split('|');
+                const formData = new FormData();
+                formData.append('file', base64toBlob(base64Image), filename);
+
+                const response = await api.post('/files', formData);
+                const { id } = response.data;
+                data.file_id = id;
+                delete data.file;
+
+                data.date = format(data.date, 'yyyy-MM-dd HH:mm:00');
+
+                await api.post('/meetups', data);
+
+                toast.success('Meetup criada com sucesso!');
+                history.push('/dashboard');
+            } catch (err) {
+                toast.error(err.isAxiosError ? err.response.data.error : 'Não foi possível criar a meetup!');
+            }
+        } else {
+            try {
+                if (!data.file.url.startsWith('http')) {
+                    const [filename, base64Image] = data.file.url.split('|');
+                    const formData = new FormData();
+                    formData.append('file', base64toBlob(base64Image), filename);
+
+                    const response = await api.post('/files', formData);
+                    const { id } = response.data;
+                    data.file_id = id;
+                    delete data.file;
+                }
+
+                data.date = format(data.date, 'yyyy-MM-dd HH:mm:00');
+
+                await api.put(`/meetups/${meetup.id}`, data);
+
+                toast.success('Meetup editada com sucesso!');
+                history.push('/dashboard');
+            } catch (err) {
+                toast.error(err.isAxiosError ? err.response.data.error : 'Não foi possível editar a meetup!');
+            }
+        }
     }
 
     return (

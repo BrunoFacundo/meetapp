@@ -22,7 +22,7 @@ export default function MeetupDetail({ history, location }) {
             toast.success('Meetup cancelada com sucesso!');
             history.push('/dashboard');
         } catch (err) {
-            toast.error('Error ao cancelar meetup!');
+            toast.error(err.isAxiosError ? err.response.data.error : 'Error ao cancelar meetup!');
         }
     }
 
