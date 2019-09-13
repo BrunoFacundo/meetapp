@@ -2,9 +2,14 @@ import { darken } from 'polished';
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    max-width: 950px;
-    margin: 50px auto;
-    padding: 0 25px;
+    height: calc(100% - 80px);
+    padding: 50px 25px;
+    overflow: auto;
+`;
+
+export const Content = styled.div`
+    margin: 0 auto;
+    max-width: 900px;
 `;
 
 export const Header = styled.header`
@@ -51,7 +56,6 @@ export const Button = styled.button`
 
 export const Detail = styled.div`
     img {
-        display: block;
         width: 100%;
         height: 300px;
         border-radius: 4px;

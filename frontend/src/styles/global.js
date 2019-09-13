@@ -15,6 +15,16 @@ export default createGlobalStyle`
         outline: 0;
     }
 
+    *::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+    }
+
+    *::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+        background: #c1c1c1;
+    }
+
     html,
     body,
     #root {
@@ -27,6 +37,7 @@ export default createGlobalStyle`
 
     body,
     input,
+    textarea,
     button {
         font: 14px 'Roboto', sans-serif;
     }

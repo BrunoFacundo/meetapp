@@ -2,13 +2,15 @@ import { darken } from 'polished';
 import styled from 'styled-components';
 
 export const Container = styled.div`
+    height: 80px;
+    padding: 0 25px;
     background: rgba(0, 0, 0, 0.3);
-    padding: 25px;
 `;
 
 export const Content = styled.div`
-    max-width: 900px;
     margin: 0 auto;
+    max-width: 900px;
+    height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;

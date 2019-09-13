@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { MdAddCircleOutline, MdKeyboardArrowRight } from 'react-icons/md';
 import api from '~/services/api';
 import history from '~/services/history';
-import { Container, Header, Meetups } from './styles';
+import { Container, Content, Header, Meetups } from './styles';
 
 export default function Dashboard() {
     const [meetups, setMeetups] = useState([]);
@@ -33,25 +33,27 @@ export default function Dashboard() {
 
     return (
         <Container>
-            <Header>
-                <strong>Meus meetups</strong>
-                <button type="button" onClick={handlNewMeetup}>
-                    <MdAddCircleOutline color="#fff" size={24} />
-                    Novo meetup
-                </button>
-            </Header>
+            <Content>
+                <Header>
+                    <strong>Meus meetups</strong>
+                    <button type="button" onClick={handlNewMeetup}>
+                        <MdAddCircleOutline color="#fff" size={24} />
+                        Novo meetup
+                    </button>
+                </Header>
 
-            <Meetups>
-                {meetups.map(meetup => (
-                    <li key={meetup.id} onClick={() => handleMeetupDetail(meetup)}>
-                        <strong>{meetup.title}</strong>
-                        <div>
-                            <span> {meetup.dateFormatted}</span>
-                            <MdKeyboardArrowRight color="#fff" size={24} />
-                        </div>
-                    </li>
-                ))}
-            </Meetups>
+                <Meetups>
+                    {meetups.map(meetup => (
+                        <li key={meetup.id} onClick={() => handleMeetupDetail(meetup)}>
+                            <strong>{meetup.title}</strong>
+                            <div>
+                                <span> {meetup.dateFormatted}</span>
+                                <MdKeyboardArrowRight color="#fff" size={24} />
+                            </div>
+                        </li>
+                    ))}
+                </Meetups>
+            </Content>
         </Container>
     );
 }
