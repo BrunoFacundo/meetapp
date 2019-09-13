@@ -3,10 +3,9 @@ import pt from 'date-fns/locale/pt';
 import React, { useEffect, useState } from 'react';
 import { MdAddCircleOutline, MdKeyboardArrowRight } from 'react-icons/md';
 import api from '~/services/api';
-import history from '~/services/history';
 import { Container, Content, Header, Meetups } from './styles';
 
-export default function Dashboard() {
+export default function Dashboard({ history }) {
     const [meetups, setMeetups] = useState([]);
 
     useEffect(() => {

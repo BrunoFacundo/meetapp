@@ -33,6 +33,7 @@ export const Content = styled.div`
         textarea {
             height: 150px;
             padding: 15px;
+            resize: none;
         }
 
         span {

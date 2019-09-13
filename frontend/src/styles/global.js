@@ -1,3 +1,4 @@
+import { lighten } from 'polished';
 import 'react-toastify/dist/ReactToastify.css';
 import { createGlobalStyle } from 'styled-components';
 
@@ -22,7 +23,7 @@ export default createGlobalStyle`
 
     *::-webkit-scrollbar-thumb {
         border-radius: 5px;
-        background: #999;
+        background: ${lighten(0.1, '#f94d6a')};
     }
 
     html,

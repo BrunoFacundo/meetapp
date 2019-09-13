@@ -3,10 +3,9 @@ import { MdDeleteForever, MdEvent, MdModeEdit, MdRoom } from 'react-icons/md';
 import { Redirect } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import api from '~/services/api';
-import history from '~/services/history';
 import { Button, Container, Content, Detail, Header } from './styles';
 
-export default function MeetupDetail({ location }) {
+export default function MeetupDetail({ history, location }) {
     if (!location.state) {
         return <Redirect to="/" />;
     }
