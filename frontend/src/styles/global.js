@@ -2,7 +2,9 @@ import { lighten } from 'polished';
 import 'react-toastify/dist/ReactToastify.css';
 import { createGlobalStyle } from 'styled-components';
 
-export default createGlobalStyle`
+const styled = { createGlobalStyle };
+
+export default styled.createGlobalStyle`
     @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
 
     * {
