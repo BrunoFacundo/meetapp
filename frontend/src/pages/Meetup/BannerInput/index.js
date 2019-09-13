@@ -6,8 +6,9 @@ import { Container } from './styles';
 export default function BannerInput({ name }) {
     const { defaultValue, registerField } = useField('file');
     const [file, setFile] = useState(null);
-    const [preview, setPreview] = useState(defaultValue && defaultValue.url);
+
     const ref = useRef();
+    const initialValue = defaultValue && defaultValue.url;
 
     useEffect(() => {
         if (ref.current) {
@@ -17,7 +18,7 @@ export default function BannerInput({ name }) {
                 path: 'dataset.file'
             });
         }
-    }, [ref]); // eslint-disable-line
+    }, [ref, name]); // eslint-disable-line
 
     function handleChange(e) {
         const file = e.target.files && e.target.files.length > 0 ? e.target.files[0] : null;
@@ -25,7 +26,6 @@ export default function BannerInput({ name }) {
             var reader = new FileReader();
             reader.onload = e => {
                 setFile(e.target.result);
-                setPreview(e.target.result);
             };
             reader.readAsDataURL(file);
         }
@@ -35,8 +35,8 @@ export default function BannerInput({ name }) {
         <Container>
             <input type="file" id="banner" ref={ref} accept="image/*" data-file={file} onChange={handleChange} />
             <label htmlFor="banner">
-                {preview ? (
-                    <img src={preview} alt="Banner" />
+                {file || initialValue ? (
+                    <img src={file || initialValue} alt="Banner" />
                 ) : (
                     <>
                         <MdCameraAlt size={42} />
