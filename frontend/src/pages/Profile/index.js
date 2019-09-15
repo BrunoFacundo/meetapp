@@ -15,7 +15,7 @@ const schema = Yup.object().shape({
     password: Yup.string().when('oldPassword', (oldPassword, field) =>
         oldPassword ? field.required().min(6, 'No mínimo 6 caracteres') : field
     ),
-    passwordConfirmation: Yup.string().when('password', (password, field) =>
+    confirmPassword: Yup.string().when('password', (password, field) =>
         password ? field.required().oneOf([Yup.ref('password')], 'As senhas não conferem') : field
     )
 });
@@ -38,7 +38,7 @@ export default function Profile() {
 
                 <Input type="password" name="oldPassword" placeholder="Senha atual" />
                 <Input type="password" name="password" placeholder="Nova senha" />
-                <Input type="password" name="passwordConfirmation" placeholder="Confirmação de senha" />
+                <Input type="password" name="confirmPassword" placeholder="Confirmação de senha" />
 
                 <button type="submit">
                     <MdAddCircleOutline color="#fff" size={24} />
