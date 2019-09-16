@@ -46,8 +46,8 @@ export default function Profile() {
 
     return (
         <Background>
+            <Header />
             <Container>
-                <Header />
                 <Form>
                     <FormInput
                         autoCorrect={false}

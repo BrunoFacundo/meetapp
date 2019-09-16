@@ -20,12 +20,40 @@ class MeetupController {
 
         const meetups = await Meetup.findAll({
             where,
-            include: [User],
+            order: [['date', 'DESC']],
+            include: [
+                {
+                    model: User,
+                    as: 'user',
+                    attributes: ['id', 'name']
+                },
+                {
+                    model: File,
+                    as: 'file',
+                    attributes: ['id', 'url', 'path']
+                }
+            ],
             limit: 10,
             offset: 10 * page - 10
         });
 
-        return res.json(meetups);
+        return res.json(
+            meetups.map(meetup => ({
+                id: meetup.id,
+                title: meetup.title,
+                description: meetup.description,
+                location: meetup.location,
+                date: meetup.date,
+                user: {
+                    id: meetup.user.id,
+                    name: meetup.user.name
+                },
+                file: {
+                    id: meetup.file.id,
+                    url: meetup.file.url
+                }
+            }))
+        );
     }
 
     async store(req, res) {
@@ -66,11 +94,11 @@ class MeetupController {
 
     async update(req, res) {
         const schema = Yup.object().shape({
-            title: Yup.string(),
-            file_id: Yup.number(),
-            description: Yup.string(),
-            location: Yup.string(),
-            date: Yup.date()
+            title: Yup.string().required(),
+            file_id: Yup.number().required(),
+            description: Yup.string().required(),
+            location: Yup.string().required(),
+            date: Yup.date().required()
         });
 
         if (!(await schema.isValid(req.body))) {

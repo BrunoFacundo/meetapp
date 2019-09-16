@@ -70,6 +70,7 @@ export default function Meetup({ history, location }) {
             }
         } else {
             try {
+                data.file_id = meetup.file.id;
                 if (!data.file.url.startsWith('http')) {
                     const [filename, base64Image] = data.file.url.split('|');
                     const formData = new FormData();
@@ -78,8 +79,8 @@ export default function Meetup({ history, location }) {
                     const response = await api.post('/files', formData);
                     const { id } = response.data;
                     data.file_id = id;
-                    delete data.file;
                 }
+                delete data.file;
 
                 data.date = format(data.date, 'yyyy-MM-dd HH:mm:00');
 
