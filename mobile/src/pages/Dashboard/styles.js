@@ -8,6 +8,19 @@ export const Container = styled.SafeAreaView`
     padding: 20px 20px 0;
 `;
 
+export const Center = styled.View`
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    margin-top: -15px;
+`;
+
+export const EmptyListText = styled.Text`
+    font-size: 18px;
+    color: #fff;
+    font-weight: bold;
+`;
+
 export const Title = styled.View`
     flex-direction: row;
     align-items: center;
@@ -24,6 +37,7 @@ export const DateText = styled.Text`
 
 export const MeetupList = styled.FlatList`
     width: 100%;
+    flex-grow: 0;
 `;
 
 export const MeetupItem = styled.View`

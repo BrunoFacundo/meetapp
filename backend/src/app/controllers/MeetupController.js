@@ -8,7 +8,8 @@ import User from '../models/User';
 class MeetupController {
     async index(req, res) {
         const where = {};
-        const page = req.query.page || 1;
+        const page = parseInt(req.query.page || 1);
+        const limit = 10;
 
         if (req.query.date) {
             const searchDate = parseISO(req.query.date);
@@ -33,17 +34,20 @@ class MeetupController {
                     attributes: ['id', 'url', 'path']
                 }
             ],
-            limit: 10,
+            limit,
             offset: 10 * page - 10
         });
 
-        return res.json(
-            meetups.map(meetup => ({
+        const count = await Meetup.count({ where });
+
+        return res.json({
+            list: meetups.map(meetup => ({
                 id: meetup.id,
                 title: meetup.title,
                 description: meetup.description,
                 location: meetup.location,
                 date: meetup.date,
+                past: meetup.past,
                 user: {
                     id: meetup.user.id,
                     name: meetup.user.name
@@ -52,8 +56,12 @@ class MeetupController {
                     id: meetup.file.id,
                     url: meetup.file.url
                 }
-            }))
-        );
+            })),
+            pagination: {
+                count,
+                pages: Math.ceil(count / limit)
+            }
+        });
     }
 
     async store(req, res) {
