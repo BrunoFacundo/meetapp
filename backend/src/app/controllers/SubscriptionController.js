@@ -1,6 +1,7 @@
 import { Op } from 'sequelize';
 import Queue from '../../lib/Queue';
 import SubscriptionMail from '../jobs/SubscriptionMail';
+import File from '../models/File';
 import Meetup from '../models/Meetup';
 import Subscription from '../models/Subscription';
 import User from '../models/User';
@@ -14,25 +15,72 @@ class SubscriptionController {
             include: [
                 {
                     model: Meetup,
+                    as: 'meetup',
                     where: {
                         date: {
                             [Op.gt]: new Date()
                         }
                     },
-                    required: true
+                    include: [
+                        {
+                            model: User,
+                            as: 'user',
+                            attributes: ['id', 'name']
+                        },
+                        {
+                            model: File,
+                            as: 'file',
+                            attributes: ['id', 'url', 'path']
+                        }
+                    ]
                 }
             ],
-            order: [[Meetup, 'date']]
+            order: [
+                [
+                    {
+                        model: Meetup,
+                        as: 'meetup'
+                    },
+                    'date',
+                    'DESC'
+                ]
+            ]
         });
 
-        return res.json(subscriptions);
+        return res.json(
+            subscriptions.map(subscription => ({
+                id: subscription.meetup.id,
+                title: subscription.meetup.title,
+                description: subscription.meetup.description,
+                location: subscription.meetup.location,
+                date: subscription.meetup.date,
+                file: {
+                    id: subscription.meetup.file.id,
+                    url: subscription.meetup.file.url
+                },
+                user: {
+                    id: subscription.meetup.user.id,
+                    name: subscription.meetup.user.name
+                }
+            }))
+        );
     }
 
     async store(req, res) {
         const user = await User.findByPk(req.userId);
         const meetup = await Meetup.findByPk(req.params.meetupId, {
-            include: [User]
+            include: [
+                {
+                    model: User,
+                    as: 'user',
+                    attributes: ['id', 'name', 'email']
+                }
+            ]
         });
+
+        if (!meetup) {
+            return res.status(400).json({ error: 'Meetup não existe.' });
+        }
 
         if (meetup.user_id === req.userId) {
             return res.status(400).json({ error: 'Não é possível se inscrever na sua própria meetup' });
@@ -49,7 +97,7 @@ class SubscriptionController {
             include: [
                 {
                     model: Meetup,
-                    required: true,
+                    as: 'meetup',
                     where: {
                         date: meetup.date
                     }
@@ -73,7 +121,18 @@ class SubscriptionController {
             user
         });
 
-        return res.json(subscription);
+        return res.json({
+            id: subscription.id,
+            meetup: {
+                id: meetup.id,
+                title: meetup.title,
+                date: meetup.date
+            },
+            user: {
+                id: user.id,
+                name: user.name
+            }
+        });
     }
 }
 
