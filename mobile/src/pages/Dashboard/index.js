@@ -53,7 +53,7 @@ export default function Dashboard() {
             setPagination(response.data.pagination);
             setPage(page);
         } catch (err) {
-            Alert.alert('Não foi possível carregar as meetups.');
+            Alert.alert('', 'Não foi possível carregar as meetups.');
         } finally {
             setRefreshing(false);
             setMoreLoading(false);
@@ -69,9 +69,9 @@ export default function Dashboard() {
     async function handleSubscription(meetup) {
         try {
             await api.post(`/meetups/${meetup.id}/subscriptions`);
-            Alert.alert('Incrição realizada com sucesso.');
+            Alert.alert('', 'Incrição realizada com sucesso.');
         } catch (err) {
-            Alert.alert(err.isAxiosError ? err.response.data.error : 'Não foi possível fazer a inscrição.');
+            Alert.alert('', err.isAxiosError ? err.response.data.error : 'Não foi possível fazer a inscrição.');
         }
     }
 

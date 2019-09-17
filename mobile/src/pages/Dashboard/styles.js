@@ -1,6 +1,6 @@
 import { Dimensions } from 'react-native';
-import { RectButton } from 'react-native-gesture-handler';
 import styled from 'styled-components/native';
+import Button from '~/components/Button';
 
 export const Container = styled.SafeAreaView`
     flex: 1;
@@ -74,12 +74,8 @@ export const MeetupInfoText = styled.Text`
     margin-left: 10px;
 `;
 
-export const SubscriptionButton = styled(RectButton)`
-    padding: 15px;
-    border-radius: 4px;
-    background: #f94d6a;
+export const SubscriptionButton = styled(Button)`
     margin-top: 10px;
-    align-items: center;
 `;
 
 export const SubscriptionButtonText = styled.Text`

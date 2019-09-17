@@ -18,30 +18,25 @@ export function* signIn({ payload }) {
 
         yield put(signInSuccess(token, user));
     } catch (err) {
-        Alert.alert('Falha na autenticação', 'Houve um erro no login, verifique seus dados.');
+        Alert.alert('', 'Houve um erro no login, verifique seus dados.');
         yield put(signFailure());
     }
 }
 
 export function* signUp({ payload }) {
     try {
-        try {
-            const { name, email, password } = payload;
-            yield call(api.post, 'users', {
-                name,
-                email,
-                password
-            });
+        const { name, email, password } = payload;
+        yield call(api.post, 'users', {
+            name,
+            email,
+            password
+        });
 
-            Alert.alert('Conta criada com sucesso', 'Faça agora o login.', [
-                { text: 'OK', onPress: () => NavigationService.navigate('SignIn') }
-            ]);
-        } catch (err) {
-            Alert.alert('Error', 'Não foi possível criar a conta, verifique seus dados.');
-            yield put(signFailure());
-        }
+        Alert.alert('', 'Conta criada com sucesso, faça agora o login.', [
+            { text: 'OK', onPress: () => NavigationService.navigate('SignIn') }
+        ]);
     } catch (err) {
-        Alert.alert('Falha no cadastro', 'Houve um erro no cadastro, verifique seus dados');
+        Alert.alert('', 'Houve um erro no cadastro, verifique seus dados');
         yield put(signFailure());
     }
 }
