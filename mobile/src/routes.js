@@ -4,6 +4,7 @@ import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
+import Subscription from './pages/Subscription';
 
 export default (isSigned = false) =>
     createAppContainer(
@@ -16,6 +17,7 @@ export default (isSigned = false) =>
                 App: createBottomTabNavigator(
                     {
                         Dashboard,
+                        Subscription,
                         Profile
                     },
                     {

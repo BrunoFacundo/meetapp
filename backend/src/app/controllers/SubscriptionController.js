@@ -134,6 +134,23 @@ class SubscriptionController {
             }
         });
     }
+
+    async delete(req, res) {
+        const subscription = await Subscription.findOne({
+            where: {
+                user_id: req.userId,
+                meetup_id: req.params.meetupId
+            }
+        });
+
+        if (!subscription) {
+            return res.status(400).json({ error: 'Você não estar inscrito nessa meetup.' });
+        }
+
+        await subscription.destroy();
+
+        return res.json({ message: 'OK' });
+    }
 }
 
 export default new SubscriptionController();
