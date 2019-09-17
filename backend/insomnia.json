@@ -1,7 +1,7 @@
 {
     "_type": "export",
     "__export_format": 4,
-    "__export_date": "2019-08-24T21:10:30.262Z",
+    "__export_date": "2019-09-17T22:05:51.794Z",
     "__export_source": "insomnia.desktop.app:v6.6.2",
     "resources": [
         {
@@ -51,6 +51,40 @@
             "_type": "workspace"
         },
         {
+            "_id": "req_bb141010ab1f4154aaa68343fe391059",
+            "authentication": {},
+            "body": {},
+            "created": 1568757918594,
+            "description": "",
+            "headers": [],
+            "isPrivate": false,
+            "metaSortKey": -1568757918594,
+            "method": "DELETE",
+            "modified": 1568757924921,
+            "name": "Delete",
+            "parameters": [],
+            "parentId": "fld_82ab844aeb9249b5944d53151d35df1a",
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingSendCookies": true,
+            "settingStoreCookies": true,
+            "url": "{{ base_url  }}/meetups/2/unsubscriptions",
+            "_type": "request"
+        },
+        {
+            "_id": "fld_82ab844aeb9249b5944d53151d35df1a",
+            "created": 1560975849099,
+            "description": "",
+            "environment": {},
+            "environmentPropertyOrder": null,
+            "metaSortKey": -1560975849099,
+            "modified": 1560975849099,
+            "name": "Subscriptions",
+            "parentId": "wrk_f190354a73094ffa85051aeda9e64c86",
+            "_type": "request_group"
+        },
+        {
             "_id": "req_cf9e24f6d3ef46789fb2cf3ac48465e7",
             "authentication": {
                 "token": "{{ token  }}",
@@ -74,18 +108,6 @@
             "settingStoreCookies": true,
             "url": "{{ base_url  }}/subscriptions",
             "_type": "request"
-        },
-        {
-            "_id": "fld_82ab844aeb9249b5944d53151d35df1a",
-            "created": 1560975849099,
-            "description": "",
-            "environment": {},
-            "environmentPropertyOrder": null,
-            "metaSortKey": -1560975849099,
-            "modified": 1560975849099,
-            "name": "Subscriptions",
-            "parentId": "wrk_f190354a73094ffa85051aeda9e64c86",
-            "_type": "request_group"
         },
         {
             "_id": "req_62c20b7e98ba4f85a9763cab636ee046",

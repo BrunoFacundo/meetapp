@@ -74,7 +74,7 @@ function Subscription({ isFocused }) {
             <Container>
                 {!loading && meetups.length == 0 && (
                     <Center>
-                        <EmptyListText>Você não tem nenhuma inscrição.</EmptyListText>
+                        <EmptyListText>Você não tem inscrição feita.</EmptyListText>
                     </Center>
                 )}
 
