@@ -9,4 +9,5 @@ export const TextInput = styled.TextInput.attrs({
     border-radius: 4px;
     font-size: 18px;
     color: rgba(255, 255, 255, 0.8);
+    ${props => (props.error ? 'border: 1px solid red' : '')};
 `;
