@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Image } from 'react-native';
+import { Alert, Image, Keyboard } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import logo from '~/assets/logo.png';
 import Background from '~/components/Background';
@@ -16,10 +16,42 @@ export default function SignUp({ navigation }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const [nameError, setNameError] = useState(false);
+    const [emailError, setEmailError] = useState(false);
+    const [passwordError, setPasswordError] = useState(false);
+
     const loading = useSelector(state => state.auth.loading);
 
     function handleSubmit() {
-        dispatch(signUpRequest(name, email, password));
+        Keyboard.dismiss();
+        let errors = false;
+
+        if (name.trim().length == 0) {
+            errors = true;
+            setNameError(true);
+        } else {
+            setNameError(false);
+        }
+
+        if (email.trim().length == 0) {
+            errors = true;
+            setEmailError(true);
+        } else {
+            setEmailError(false);
+        }
+
+        if (password.trim().length == 0) {
+            errors = true;
+            setPasswordError(true);
+        } else {
+            setPasswordError(false);
+        }
+
+        if (errors) {
+            Alert.alert('', 'Preencha todos os campos obrigatórios');
+        } else {
+            dispatch(signUpRequest(name, email, password));
+        }
     }
 
     return (
@@ -33,6 +65,7 @@ export default function SignUp({ navigation }) {
                         autoCapitalize="none"
                         placeholder="Nome completo"
                         returnKeyType="next"
+                        error={nameError}
                         onSubmitEditing={() => emailRef.current.focus()}
                         value={name}
                         onChangeText={setName}
@@ -45,6 +78,7 @@ export default function SignUp({ navigation }) {
                         placeholder="Digite seu e-mail"
                         ref={emailRef}
                         returnKeyType="next"
+                        error={emailError}
                         onSubmitEditing={() => passwordRef.current.focus()}
                         value={email}
                         onChangeText={setEmail}
@@ -55,6 +89,7 @@ export default function SignUp({ navigation }) {
                         placeholder="Sua senha secreta"
                         ref={passwordRef}
                         returnKeyType="send"
+                        error={passwordError}
                         onSubmitEditing={handleSubmit}
                         value={password}
                         onChangeText={setPassword}
