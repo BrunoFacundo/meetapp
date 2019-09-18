@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { Alert, Keyboard } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { useDispatch, useSelector } from 'react-redux';
 import Background from '~/components/Background';
@@ -22,6 +23,11 @@ export default function Profile() {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
+    const [nameError, setNameError] = useState(false);
+    const [emailError, setEmailError] = useState(false);
+    const [passwordError, setPasswordError] = useState(false);
+    const [confirmPasswordError, setConfirmPasswordError] = useState(false);
+
     useEffect(() => {
         setOldPassword('');
         setPassword('');
@@ -29,15 +35,52 @@ export default function Profile() {
     }, [profile]);
 
     function handleSubmit() {
-        dispatch(
-            updateProfileRequest({
-                name,
-                email,
-                oldPassword,
-                password,
-                confirmPassword
-            })
-        );
+        Keyboard.dismiss();
+        let errors = false;
+
+        if (name.trim().length == 0) {
+            errors = true;
+            setNameError(true);
+        } else {
+            setNameError(false);
+        }
+
+        if (email.trim().length == 0) {
+            errors = true;
+            setEmailError(true);
+        } else {
+            setEmailError(false);
+        }
+
+        if (oldPassword.trim().length > 0) {
+            if (password.trim().length == 0) {
+                errors = true;
+                setPasswordError(true);
+            } else {
+                setPasswordError(false);
+            }
+
+            if (confirmPassword.trim().length == 0) {
+                errors = true;
+                setConfirmPasswordError(true);
+            } else {
+                setConfirmPasswordError(false);
+            }
+        }
+
+        if (errors) {
+            Alert.alert('', 'Preencha todos os campos obrigatórios');
+        } else {
+            dispatch(
+                updateProfileRequest({
+                    name,
+                    email,
+                    oldPassword,
+                    password,
+                    confirmPassword
+                })
+            );
+        }
     }
 
     function handleLogout() {
@@ -54,6 +97,7 @@ export default function Profile() {
                         autoCapitalize="none"
                         placeholder="Nome completo"
                         returnKeyType="next"
+                        error={nameError}
                         onSubmitEditing={() => emailRef.current.focus()}
                         value={name}
                         onChangeText={setName}
@@ -65,6 +109,7 @@ export default function Profile() {
                         autoCapitalize="none"
                         placeholder="Digite seu e-mail"
                         ref={emailRef}
+                        error={emailError}
                         returnKeyType="next"
                         onSubmitEditing={() => oldPasswordRef.current.focus()}
                         value={email}
@@ -88,6 +133,7 @@ export default function Profile() {
                         secureTextEntry
                         placeholder="Nova senha"
                         ref={passwordRef}
+                        error={passwordError}
                         returnKeyType="next"
                         onSubmitEditing={() => confirmPasswordRef.current.focus()}
                         value={password}
@@ -99,6 +145,7 @@ export default function Profile() {
                         secureTextEntry
                         placeholder="Confirmação de senha"
                         ref={confirmPasswordRef}
+                        error={confirmPasswordError}
                         returnKeyType="send"
                         onSubmitEditing={handleSubmit}
                         value={confirmPassword}
