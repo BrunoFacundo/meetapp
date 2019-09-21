@@ -13,7 +13,7 @@ const routes = new Router();
 
 const upload = multer(multerConfig);
 
-routes.get('/', (req, res) => res.send('Meetapp'));
+routes.get('/', (req, res) => res.send('Meetapp - Api'));
 
 routes.post('/users', UserController.store);
 routes.post('/sessions', SessionController.store);
