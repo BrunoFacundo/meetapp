@@ -59,7 +59,7 @@ export default function Meetup({ history, location }) {
                 data.file_id = id;
                 delete data.file;
 
-                data.date = format(data.date, 'yyyy-MM-dd HH:mm:00');
+                data.date = format(data.date, "yyyy-MM-dd'T'HH:mm:00xxx");
 
                 await api.post('/meetups', data);
 
@@ -82,7 +82,7 @@ export default function Meetup({ history, location }) {
                 }
                 delete data.file;
 
-                data.date = format(data.date, 'yyyy-MM-dd HH:mm:00');
+                data.date = format(data.date, 'yyyy-MM-dd HH:mm:00xxx');
 
                 await api.put(`/meetups/${meetup.id}`, data);
 
