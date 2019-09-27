@@ -35,10 +35,10 @@ export default function DateInput({ name, placeholder }) {
                     onChange={handleChange}
                     locale={pt}
                     showTimeSelect
-                    timeFormat="HH:mm"
-                    timeIntervals={30}
+                    timeFormat="HH'h'"
+                    timeIntervals={60}
                     timeCaption="Hora"
-                    dateFormat="dd/MM/yyyy 'às' HH:mm"
+                    dateFormat="dd/MM/yyyy 'às' HH'h'"
                 />
             </Container>
             {error && <span>{error}</span>}
