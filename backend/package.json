@@ -8,7 +8,10 @@
         "start": "node dist/server.js",
         "dev": "nodemon src/server.js",
         "queue": "nodemon src/queue.js",
-        "build": "sucrase src -d dist --transforms imports"
+        "build": "sucrase src -d dist --transforms imports",
+        "migrate": "sequelize db:migrate",
+        "seed": "sequelize db:seed:all",
+        "reset-db": "sequelize db:migrate:undo:all"
     },
     "dependencies": {
         "@sentry/node": "^5.6.2",
