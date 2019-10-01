@@ -1,7 +1,7 @@
 {
     "_type": "export",
     "__export_format": 4,
-    "__export_date": "2019-09-17T22:05:51.794Z",
+    "__export_date": "2019-10-01T00:21:41.867Z",
     "__export_source": "insomnia.desktop.app:v6.6.2",
     "resources": [
         {
@@ -60,7 +60,7 @@
             "isPrivate": false,
             "metaSortKey": -1568757918594,
             "method": "DELETE",
-            "modified": 1568757924921,
+            "modified": 1569888682340,
             "name": "Delete",
             "parameters": [],
             "parentId": "fld_82ab844aeb9249b5944d53151d35df1a",
@@ -69,7 +69,7 @@
             "settingRebuildPath": true,
             "settingSendCookies": true,
             "settingStoreCookies": true,
-            "url": "{{ base_url  }}/meetups/2/unsubscriptions",
+            "url": "{{ base_url  }}/meetups/1/unsubscriptions",
             "_type": "request"
         },
         {
@@ -147,19 +147,19 @@
             "isPrivate": false,
             "metaSortKey": -1560972409630,
             "method": "GET",
-            "modified": 1566676756447,
+            "modified": 1569889030239,
             "name": "List",
             "parameters": [
                 {
                     "id": "pair_4f0a4b446243412cb79f14e636609314",
                     "name": "date",
-                    "value": "2019-08-25"
+                    "value": "2019-10-01"
                 },
                 {
-                    "disabled": true,
+                    "disabled": false,
                     "id": "pair_9b6c911e32744245a82fcb0f898b1e3f",
                     "name": "page",
-                    "value": "2"
+                    "value": "1"
                 }
             ],
             "parentId": "fld_2ec994bb4a8a4f1ab9c9e0b91730be27",
@@ -191,7 +191,7 @@
             },
             "body": {
                 "mimeType": "application/json",
-                "text": "{\n\t\"title\": \"Meetup de teste\",\n\t\"description\": \"Apenas para testar\",\n\t\"location\": \"Casa\",\n\t\"date\": \"2019-08-25 15:00:00\",\n\t\"file_id\": 1\n}"
+                "text": "{\n\t\"title\": \"Meetup de React Native\",\n\t\"description\": \"O Meetup de React Native é um evento que reúne a comunidade de desenvolvimento mobile utilizando React a fim de compartilhar conhecimento. Todos são convidados.\",\n\t\"location\": \"Rua Guilherme Gembala, 260\",\n\t\"date\": \"2019-10-01 10:00:00\",\n\t\"file_id\": 1\n}"
             },
             "created": 1560972409580,
             "description": "",
@@ -205,7 +205,7 @@
             "isPrivate": false,
             "metaSortKey": -1560972409580,
             "method": "POST",
-            "modified": 1566676878814,
+            "modified": 1569887850466,
             "name": "Create",
             "parameters": [],
             "parentId": "fld_2ec994bb4a8a4f1ab9c9e0b91730be27",
@@ -225,7 +225,7 @@
             },
             "body": {
                 "mimeType": "application/json",
-                "text": "{\n\t\"title\": \"Meetup de teste\",\n\t\"description\": \"Apenas para testar\",\n\t\"location\": \"Casa\",\n\t\"date\": \"2019-08-25 15:00:00\",\n\t\"file_id\": 1\n}"
+                "text": "{\n\t\"title\": \"Meetup de React Native [Nova data]\",\n\t\"description\": \"O Meetup de React Native é um evento que reúne a comunidade de desenvolvimento mobile utilizando React a fim de compartilhar conhecimento. Todos são convidados.\",\n\t\"location\": \"Rua Guilherme Gembala, 260\",\n\t\"date\": \"2019-10-02 10:00:00\",\n\t\"file_id\": 1\n}"
             },
             "created": 1560974462848,
             "description": "",
@@ -239,7 +239,7 @@
             "isPrivate": false,
             "metaSortKey": -1560967006634,
             "method": "PUT",
-            "modified": 1566676862057,
+            "modified": 1569888631689,
             "name": "Update",
             "parameters": [],
             "parentId": "fld_2ec994bb4a8a4f1ab9c9e0b91730be27",
@@ -264,7 +264,7 @@
             "isPrivate": false,
             "metaSortKey": -1560964305161,
             "method": "DELETE",
-            "modified": 1566676868392,
+            "modified": 1569888641618,
             "name": "Delete",
             "parameters": [],
             "parentId": "fld_2ec994bb4a8a4f1ab9c9e0b91730be27",
@@ -273,7 +273,7 @@
             "settingRebuildPath": true,
             "settingSendCookies": true,
             "settingStoreCookies": true,
-            "url": "{{ base_url  }}/meetups/2",
+            "url": "{{ base_url  }}/meetups/1",
             "_type": "request"
         },
         {
@@ -286,7 +286,7 @@
                 "mimeType": "multipart/form-data",
                 "params": [
                     {
-                        "fileName": "C:\\Users\\bruno_ramos\\Downloads\\profile.jpg",
+                        "fileName": "C:\\Users\\bruno_ramos\\Downloads\\images\\meeting.png",
                         "id": "pair_09400161606e4a23980359d67142ef03",
                         "name": "file",
                         "type": "file",
@@ -306,7 +306,7 @@
             "isPrivate": false,
             "metaSortKey": -1559240312029,
             "method": "POST",
-            "modified": 1566676423061,
+            "modified": 1569887685863,
             "name": "Create",
             "parameters": [],
             "parentId": "fld_f42a41ce6ac344aba7e9f5b96a7459ee",
@@ -335,7 +335,7 @@
             "authentication": {},
             "body": {
                 "mimeType": "application/json",
-                "text": "{\n\t\"email\": \"teste@gmail.com.br\",\n\t\"password\": \"123456\"\n}"
+                "text": "{\n\t\"email\": \"rsxp@rocketseat.com.br\",\n\t\"password\": \"12345678\"\n}"
             },
             "created": 1560971802039,
             "description": "",
@@ -349,7 +349,7 @@
             "isPrivate": false,
             "metaSortKey": -1556063207557,
             "method": "POST",
-            "modified": 1566676942168,
+            "modified": 1569888341811,
             "name": "Create",
             "parameters": [],
             "parentId": "fld_723df42f7bdf45b79689e0a22fff01f7",
@@ -358,7 +358,7 @@
             "settingRebuildPath": true,
             "settingSendCookies": true,
             "settingStoreCookies": true,
-            "url": "http://localhost:3333/sessions",
+            "url": "{{ base_url  }}/sessions",
             "_type": "request"
         },
         {
@@ -378,7 +378,7 @@
             "authentication": {},
             "body": {
                 "mimeType": "application/json",
-                "text": "{\n\t\"name\": \"Teste\",\n\t\"email\": \"teste@gmail.com.br\",\n\t\"password\": \"123456\"\n}"
+                "text": "{\n\t\"name\": \"Rocketseat Experience\",\n\t\"email\": \"rsxp@rocketseat.com.br\",\n\t\"password\": \"12345678\"\n}"
             },
             "created": 1560971802028,
             "description": "",
@@ -392,7 +392,7 @@
             "isPrivate": false,
             "metaSortKey": -1556049139968,
             "method": "POST",
-            "modified": 1566676920191,
+            "modified": 1569888350928,
             "name": "Create",
             "parameters": [],
             "parentId": "fld_f192d6d4bd49429abae3d818d262b340",
@@ -401,7 +401,7 @@
             "settingRebuildPath": true,
             "settingSendCookies": true,
             "settingStoreCookies": true,
-            "url": "http://localhost:3333/users",
+            "url": "{{ base_url  }}/users",
             "_type": "request"
         },
         {
@@ -424,7 +424,7 @@
             },
             "body": {
                 "mimeType": "application/json",
-                "text": "{\n\t\"name\": \"Teste\",\n\t\"email\": \"teste@gmail.com.br\",\n\t\"old_password\": \"12345678\",\n\t\"password\": \"123456\",\n\t\"password_confirmation\": \"123456\"\n}"
+                "text": "{\n\t\"name\": \"Rocketseat Experience\",\n\t\"email\": \"rsxp@rocketseat.com.br\",\n\t\"oldPassword\": \"12345678\",\n\t\"password\": \"123456\",\n\t\"confirmPassword\": \"123456\"\n}"
             },
             "created": 1560971802030,
             "description": "",
@@ -438,7 +438,7 @@
             "isPrivate": false,
             "metaSortKey": -1556039655732,
             "method": "PUT",
-            "modified": 1566676311923,
+            "modified": 1569888553994,
             "name": "Update",
             "parameters": [],
             "parentId": "fld_f192d6d4bd49429abae3d818d262b340",
@@ -447,7 +447,7 @@
             "settingRebuildPath": true,
             "settingSendCookies": true,
             "settingStoreCookies": true,
-            "url": "http://localhost:3333/users",
+            "url": "{{ base_url  }}/users",
             "_type": "request"
         },
         {
@@ -456,7 +456,7 @@
             "created": 1560971763786,
             "data": {
                 "base_url": "http://localhost:3333",
-                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNTY2Njc3MjU5LCJleHAiOjE1NjcyODIwNTl9.Ahh77ramMOblbcDb1bgxmA1Arll2zQO8KqWqiO--Fpk"
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTY5ODg4NzczLCJleHAiOjE1NzA0OTM1NzN9.eV9Cxv8BqvgdBNc0Ad3Bdm6z3lQ4T99gngVv6kyMsyc"
             },
             "dataPropertyOrder": {
                 "&": [
@@ -466,7 +466,7 @@
             },
             "isPrivate": false,
             "metaSortKey": 1560971763786,
-            "modified": 1566677275050,
+            "modified": 1569888778302,
             "name": "Base Environment",
             "parentId": "wrk_f190354a73094ffa85051aeda9e64c86",
             "_type": "environment"
