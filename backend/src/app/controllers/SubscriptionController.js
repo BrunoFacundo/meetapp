@@ -79,7 +79,7 @@ class SubscriptionController {
         });
 
         if (!meetup) {
-            return res.status(400).json({ error: 'Meetup não existe.' });
+            return res.status(400).json({ error: 'Meetup não encontrada.' });
         }
 
         if (meetup.user_id === req.userId) {
@@ -87,7 +87,7 @@ class SubscriptionController {
         }
 
         if (meetup.past) {
-            return res.status(400).json({ error: 'Não é possível se inscrever em meetup passsada' });
+            return res.status(400).json({ error: 'Não é possível se inscrever em meetup que já passaram' });
         }
 
         const checkDate = await Subscription.findOne({
@@ -149,7 +149,7 @@ class SubscriptionController {
 
         await subscription.destroy();
 
-        return res.json({ message: 'OK' });
+        return res.send();
     }
 }
 
