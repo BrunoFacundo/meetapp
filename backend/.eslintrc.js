@@ -15,13 +15,14 @@ module.exports = {
     },
     plugins: ['prettier'],
     rules: {
-        camelcase: 'off',
         'prettier/prettier': 'error',
         'import/prefer-default-export': 'off',
         'class-methods-use-this': 'off',
         'no-console': ['off'],
         'no-unused-vars': ['error', { argsIgnorePattern: '^(_|next)$' }],
         'no-param-reassign': 'off',
-        'no-underscore-dangle': 'off'
+        'no-underscore-dangle': 'off',
+        camelcase: 'off',
+        radix: 'off'
     }
 };
