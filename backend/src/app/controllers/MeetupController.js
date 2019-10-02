@@ -1,3 +1,4 @@
+import Boom from '@hapi/boom';
 import { endOfDay, isBefore, parseISO, startOfDay } from 'date-fns';
 import { Op } from 'sequelize';
 import File from '../models/File';
@@ -6,17 +7,15 @@ import User from '../models/User';
 
 class MeetupController {
     async index(req, res) {
-        const where = {};
+        const searchDate = parseISO(req.query.date);
         const page = parseInt(req.query.page || 1);
         const limit = 10;
 
-        if (req.query.date) {
-            const searchDate = parseISO(req.query.date);
-
-            where.date = {
+        const where = {
+            date: {
                 [Op.between]: [startOfDay(searchDate), endOfDay(searchDate)]
-            };
-        }
+            }
+        };
 
         const meetups = await Meetup.findAll({
             where,
@@ -65,14 +64,14 @@ class MeetupController {
 
     async store(req, res) {
         if (isBefore(parseISO(req.body.date), new Date())) {
-            return res.status(400).json({ error: 'Data da meetup inválida' });
+            throw Boom.badRequest('Data da meetup já passou.');
         }
 
         const meetup = await Meetup.create({
             ...req.body,
             user_id: req.userId
         });
-        const file = await File.findByPk(req.body.file_id);
+        const file = await meetup.getFile();
 
         return res.json({
             id: meetup.id,
@@ -88,23 +87,26 @@ class MeetupController {
     }
 
     async update(req, res) {
-        const user_id = req.userId;
         const meetup = await Meetup.findByPk(req.params.id);
 
-        if (meetup.user_id !== user_id) {
-            return res.status(401).json({ error: 'Não autorizado' });
+        if (!meetup) {
+            throw Boom.badRequest('Meetup não encontrada.');
+        }
+
+        if (meetup.user_id !== req.userId) {
+            throw Boom.unauthorized('Você não é o proprietário dessa meetup.');
         }
 
         if (isBefore(parseISO(req.body.date), new Date())) {
-            return res.status(400).json({ error: 'Data da meetup inválida' });
+            throw Boom.badRequest('Data da meetup já passou.');
         }
 
         if (meetup.past) {
-            return res.status(400).json({ error: 'Não é possível atualizar meetup passada' });
+            throw Boom.badRequest('Não é possível atualizar meetup passada.');
         }
 
         await meetup.update(req.body);
-        const file = await File.findByPk(req.body.file_id);
+        const file = await meetup.getFile();
 
         return res.json({
             id: meetup.id,
@@ -120,19 +122,18 @@ class MeetupController {
     }
 
     async delete(req, res) {
-        const user_id = req.userId;
         const meetup = await Meetup.findByPk(req.params.id);
 
         if (!meetup) {
-            return res.status(400).json({ error: 'Meetup não encontrada' });
+            throw Boom.badRequest('Meetup não encontrada.');
         }
 
-        if (meetup.user_id !== user_id) {
-            return res.status(401).json({ error: 'Não autorizado' });
+        if (meetup.user_id !== req.userId) {
+            throw Boom.unauthorized('Você não é o proprietário dessa meetup.');
         }
 
         if (meetup.past) {
-            return res.status(400).json({ error: 'Não é possível deletar meetup passada' });
+            throw Boom.badRequest('Não é possível deletar meetup passada.');
         }
 
         await meetup.destroy();

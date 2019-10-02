@@ -1,10 +1,10 @@
+import Boom from '@hapi/boom';
 import { Op } from 'sequelize';
-import Queue from '../../lib/Queue';
-import SubscriptionMail from '../jobs/SubscriptionMail';
 import File from '../models/File';
 import Meetup from '../models/Meetup';
 import Subscription from '../models/Subscription';
 import User from '../models/User';
+import CreateSubscriptionService from '../services/CreateSubscriptionService';
 
 class SubscriptionController {
     async index(req, res) {
@@ -67,58 +67,9 @@ class SubscriptionController {
     }
 
     async store(req, res) {
-        const user = await User.findByPk(req.userId);
-        const meetup = await Meetup.findByPk(req.params.meetupId, {
-            include: [
-                {
-                    model: User,
-                    as: 'user',
-                    attributes: ['id', 'name', 'email']
-                }
-            ]
-        });
-
-        if (!meetup) {
-            return res.status(400).json({ error: 'Meetup não encontrada.' });
-        }
-
-        if (meetup.user_id === req.userId) {
-            return res.status(400).json({ error: 'Não é possível se inscrever na sua própria meetup' });
-        }
-
-        if (meetup.past) {
-            return res.status(400).json({ error: 'Não é possível se inscrever em meetup que já passaram' });
-        }
-
-        const checkDate = await Subscription.findOne({
-            where: {
-                user_id: user.id
-            },
-            include: [
-                {
-                    model: Meetup,
-                    as: 'meetup',
-                    where: {
-                        date: meetup.date
-                    }
-                }
-            ]
-        });
-
-        if (checkDate) {
-            return res.status(400).json({
-                error: 'Não é possível se inscrever em duas meetup ao mesmo tempo'
-            });
-        }
-
-        const subscription = await Subscription.create({
-            user_id: user.id,
-            meetup_id: meetup.id
-        });
-
-        await Queue.add(SubscriptionMail.key, {
-            meetup,
-            user
+        const { subscription, meetup, user } = await CreateSubscriptionService.run({
+            userId: req.userId,
+            meetupId: req.params.meetupId
         });
 
         return res.json({
@@ -144,7 +95,7 @@ class SubscriptionController {
         });
 
         if (!subscription) {
-            return res.status(400).json({ error: 'Você não estar inscrito nessa meetup.' });
+            throw Boom.badRequest('Você não estar inscrito nessa meetup.');
         }
 
         await subscription.destroy();

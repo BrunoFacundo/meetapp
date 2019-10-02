@@ -18,14 +18,13 @@ class App {
         this.server.use(Sentry.Handlers.requestHandler());
         this.middlewares();
         this.routes();
-        this.exceptionHandler();
         this.server.use(Sentry.Handlers.errorHandler());
+        this.exceptionHandler();
     }
 
     middlewares() {
         this.server.use(cors());
         this.server.use(express.json());
-        this.server.use(express.urlencoded({ extended: false }));
         this.server.use('/files', express.static(path.resolve(__dirname, '..', 'tmp', 'uploads')));
     }
 
@@ -35,6 +34,10 @@ class App {
 
     exceptionHandler() {
         this.server.use(async (err, req, res, next) => {
+            if (err.isBoom) {
+                return res.status(err.output.statusCode).json({ error: err.message, ...err.data });
+            }
+
             if (process.env.NODE_ENV === 'development') {
                 const errors = await new Youch(err, req).toJSON();
 

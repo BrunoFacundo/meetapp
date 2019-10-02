@@ -1,3 +1,4 @@
+import Boom from '@hapi/boom';
 import User from '../models/User';
 
 class UserController {
@@ -7,7 +8,7 @@ class UserController {
         });
 
         if (userExists) {
-            return res.status(400).json({ error: 'Usuário já cadastrado' });
+            throw Boom.badRequest('Usuário já cadastrado.');
         }
 
         const { id, name, email } = await User.create(req.body);
@@ -27,12 +28,12 @@ class UserController {
             const userExists = await User.findOne({ where: { email } });
 
             if (userExists) {
-                return res.status(400).json({ error: 'Usuário já existe' });
+                throw Boom.badRequest('Usuário já cadastrado.');
             }
         }
 
         if (oldPassword && !(await user.checkPassword(oldPassword))) {
-            return res.status(401).json({ error: 'Senha errada' });
+            throw Boom.unauthorized('Senha incorreta.');
         }
 
         const { id, name } = await user.update({
