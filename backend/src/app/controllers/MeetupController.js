@@ -1,6 +1,7 @@
 import Boom from '@hapi/boom';
 import { endOfDay, isBefore, parseISO, startOfDay } from 'date-fns';
 import { Op } from 'sequelize';
+import Cache from '../../lib/Cache';
 import File from '../models/File';
 import Meetup from '../models/Meetup';
 import User from '../models/User';
@@ -10,6 +11,13 @@ class MeetupController {
         const searchDate = parseISO(req.query.date);
         const page = parseInt(req.query.page || 1);
         const limit = 10;
+
+        const cachedKey = `meetups:date:${req.query.date}:page:${page}`;
+
+        const cached = await Cache.get(cachedKey);
+        if (cached) {
+            return res.json(cached);
+        }
 
         const where = {
             date: {
@@ -38,7 +46,7 @@ class MeetupController {
 
         const count = await Meetup.count({ where });
 
-        return res.json({
+        const result = {
             list: meetups.map(meetup => ({
                 id: meetup.id,
                 title: meetup.title,
@@ -59,7 +67,11 @@ class MeetupController {
                 count,
                 pages: Math.ceil(count / limit)
             }
-        });
+        };
+
+        await Cache.set(cachedKey, result);
+
+        return res.json(result);
     }
 
     async store(req, res) {
@@ -72,6 +84,9 @@ class MeetupController {
             user_id: req.userId
         });
         const file = await meetup.getFile();
+
+        await Cache.invalidatePrefix('meetups');
+        await Cache.invalidate(`user:${req.userId}:organizing`);
 
         return res.json({
             id: meetup.id,
@@ -108,6 +123,9 @@ class MeetupController {
         await meetup.update(req.body);
         const file = await meetup.getFile();
 
+        await Cache.invalidatePrefix('meetups');
+        await Cache.invalidate(`user:${req.userId}:organizing`);
+
         return res.json({
             id: meetup.id,
             title: meetup.title,
@@ -137,6 +155,9 @@ class MeetupController {
         }
 
         await meetup.destroy();
+
+        await Cache.invalidatePrefix('meetups');
+        await Cache.invalidate(`user:${req.userId}:organizing`);
 
         return res.send();
     }

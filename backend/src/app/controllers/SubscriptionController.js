@@ -1,5 +1,6 @@
 import Boom from '@hapi/boom';
 import { Op } from 'sequelize';
+import Cache from '../../lib/Cache';
 import File from '../models/File';
 import Meetup from '../models/Meetup';
 import Subscription from '../models/Subscription';
@@ -8,6 +9,13 @@ import CreateSubscriptionService from '../services/CreateSubscriptionService';
 
 class SubscriptionController {
     async index(req, res) {
+        const cachedKey = `user:${req.userId}:subscriptions`;
+
+        const cached = await Cache.get(cachedKey);
+        if (cached) {
+            return res.json(cached);
+        }
+
         const subscriptions = await Subscription.findAll({
             where: {
                 user_id: req.userId
@@ -47,23 +55,25 @@ class SubscriptionController {
             ]
         });
 
-        return res.json(
-            subscriptions.map(subscription => ({
-                id: subscription.meetup.id,
-                title: subscription.meetup.title,
-                description: subscription.meetup.description,
-                location: subscription.meetup.location,
-                date: subscription.meetup.date,
-                file: {
-                    id: subscription.meetup.file.id,
-                    url: subscription.meetup.file.url
-                },
-                user: {
-                    id: subscription.meetup.user.id,
-                    name: subscription.meetup.user.name
-                }
-            }))
-        );
+        const result = subscriptions.map(subscription => ({
+            id: subscription.meetup.id,
+            title: subscription.meetup.title,
+            description: subscription.meetup.description,
+            location: subscription.meetup.location,
+            date: subscription.meetup.date,
+            file: {
+                id: subscription.meetup.file.id,
+                url: subscription.meetup.file.url
+            },
+            user: {
+                id: subscription.meetup.user.id,
+                name: subscription.meetup.user.name
+            }
+        }));
+
+        await Cache.set(cachedKey, result);
+
+        return res.json(result);
     }
 
     async store(req, res) {
@@ -71,6 +81,8 @@ class SubscriptionController {
             userId: req.userId,
             meetupId: req.params.meetupId
         });
+
+        Cache.invalidate(`user:${req.userId}:subscriptions`);
 
         return res.json({
             id: subscription.id,
@@ -99,6 +111,8 @@ class SubscriptionController {
         }
 
         await subscription.destroy();
+
+        Cache.invalidate(`user:${req.userId}:subscriptions`);
 
         return res.send();
     }
