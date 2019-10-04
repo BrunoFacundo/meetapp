@@ -26,6 +26,7 @@ module.exports = {
         'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
         'no-param-reassign': 'off',
         'no-underscore-dangle': 'off',
+        'no-plusplus': 'off',
         'react/prop-types': 'off',
         'react-hooks/rules-of-hooks': 'error',
         'react-hooks/exhaustive-deps': 'warn',
