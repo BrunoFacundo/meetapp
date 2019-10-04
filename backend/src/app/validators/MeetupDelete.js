@@ -1,4 +1,5 @@
 import * as Yup from 'yup';
+import Boom from '@hapi/boom';
 
 export default async (req, res, next) => {
     try {
@@ -10,6 +11,6 @@ export default async (req, res, next) => {
 
         return next();
     } catch (err) {
-        return res.status(400).json({ error: 'Falha na validação dos dados', messages: err.inner });
+        throw Boom.badRequest('Falha na validação dos dados.', { messages: err.inner });
     }
 };

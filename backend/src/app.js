@@ -3,10 +3,12 @@ import cors from 'cors';
 import 'dotenv/config';
 import express from 'express';
 import 'express-async-errors';
+import helmet from 'helmet';
 import path from 'path';
 import Youch from 'youch';
 import sentryConfig from './config/sentry';
 import './database';
+import RateLimit from './lib/RateLimit';
 import routes from './routes';
 
 class App {
@@ -18,15 +20,23 @@ class App {
         this.server.use(Sentry.Handlers.requestHandler());
         this.middlewares();
         this.routes();
-        this.exceptionHandler();
         this.server.use(Sentry.Handlers.errorHandler());
+        this.exceptionHandler();
     }
 
     middlewares() {
-        this.server.use(cors());
+        this.server.use(helmet());
+        this.server.use(
+            cors({
+                origin: process.env.FRONT_URL
+            })
+        );
         this.server.use(express.json());
-        this.server.use(express.urlencoded({ extended: false }));
         this.server.use('/files', express.static(path.resolve(__dirname, '..', 'tmp', 'uploads')));
+
+        if (process.env.NODE_ENV !== 'development') {
+            this.server.use(RateLimit);
+        }
     }
 
     routes() {
@@ -35,6 +45,10 @@ class App {
 
     exceptionHandler() {
         this.server.use(async (err, req, res, next) => {
+            if (err.isBoom) {
+                return res.status(err.output.statusCode).json({ error: err.message, ...err.data });
+            }
+
             if (process.env.NODE_ENV === 'development') {
                 const errors = await new Youch(err, req).toJSON();
 
