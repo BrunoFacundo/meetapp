@@ -8,7 +8,7 @@ import path from 'path';
 import Youch from 'youch';
 import sentryConfig from './config/sentry';
 import './database';
-import RateLimit from './lib/RateLimit';
+import appLimiter from './lib/RateLimit';
 import routes from './routes';
 
 class App {
@@ -35,7 +35,7 @@ class App {
         this.server.use('/files', express.static(path.resolve(__dirname, '..', 'tmp', 'uploads')));
 
         if (process.env.NODE_ENV !== 'development') {
-            this.server.use(RateLimit);
+            this.server.use(appLimiter());
         }
     }
 

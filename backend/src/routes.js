@@ -18,7 +18,6 @@ import validateSubscriptionStore from './app/validators/SubscriptionStore';
 import validateUserStore from './app/validators/UserStore';
 import validateUserUpdate from './app/validators/UserUpdate';
 import multerConfig from './config/multer';
-import BruteForce from './lib/BruteForce';
 
 const routes = new Router();
 const upload = multer(multerConfig);
@@ -26,7 +25,7 @@ const upload = multer(multerConfig);
 routes.get('/', (req, res) => res.send('Meetapp - Api'));
 
 routes.post('/users', validateUserStore, UserController.store);
-routes.post('/sessions', BruteForce.prevent, validateSessionStore, SessionController.store);
+routes.post('/sessions', validateSessionStore, SessionController.store);
 
 routes.use(authMiddleware);
 

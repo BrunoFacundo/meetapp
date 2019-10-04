@@ -1,17 +1,22 @@
-import ExpressRateLimit from 'express-rate-limit';
-import RateLimitRedis from 'rate-limit-redis';
-import redis from 'redis';
+import RateLimit from 'express-rate-limit';
+import Redis from 'ioredis';
+import RedisStore from 'rate-limit-redis';
 
-class RateLimit extends ExpressRateLimit {
-    constructor() {
-        const store = new RateLimitRedis({
-            client: redis.createClient({
-                host: process.env.REDIS_HOST,
-                port: process.env.REDIS_PORT
-            })
-        });
-        super({ store, windowMs: 1000 * 60 * 15, max: 100 });
-    }
+export default function appLimiter() {
+    const expiry = 60 * 15; // 15 min
+
+    const store = new RedisStore({
+        client: new Redis({
+            host: process.env.REDIS_HOST,
+            port: process.env.REDIS_PORT
+        }),
+        expiry
+    });
+
+    return new RateLimit({
+        store,
+        message: 'Você fez muitas requisições. Por favor tente novamente mais tarde.',
+        windowMs: expiry * 1000,
+        max: 100
+    });
 }
-
-export default new RateLimit();
