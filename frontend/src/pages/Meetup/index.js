@@ -30,13 +30,13 @@ export default function Meetup({ history, location }) {
         contentType = contentType.replace('data:', '');
         data = data.replace('base64,', '');
 
-        let byteCharacters = atob(data);
-        let byteArrays = [];
+        const byteCharacters = atob(data);
+        const byteArrays = [];
 
         for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
-            let slice = byteCharacters.slice(offset, offset + sliceSize);
+            const slice = byteCharacters.slice(offset, offset + sliceSize);
 
-            let byteNumbers = new Array(slice.length);
+            const byteNumbers = new Array(slice.length);
             for (let i = 0; i < slice.length; i++) {
                 byteNumbers[i] = slice.charCodeAt(i);
             }
@@ -66,7 +66,7 @@ export default function Meetup({ history, location }) {
                 toast.success('Meetup criada com sucesso!');
                 history.push('/dashboard');
             } catch (err) {
-                toast.error(err.isAxiosError ? err.response.data.error : 'Não foi possível criar a meetup!');
+                toast.error(err.isAxiosError ? err.response.data.error.message : 'Não foi possível criar a meetup!');
             }
         } else {
             try {
@@ -89,7 +89,7 @@ export default function Meetup({ history, location }) {
                 toast.success('Meetup editada com sucesso!');
                 history.push('/dashboard');
             } catch (err) {
-                toast.error(err.isAxiosError ? err.response.data.error : 'Não foi possível editar a meetup!');
+                toast.error(err.isAxiosError ? err.response.data.error.message : 'Não foi possível editar a meetup!');
             }
         }
     }

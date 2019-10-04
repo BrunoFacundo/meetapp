@@ -46,7 +46,12 @@ class App {
     exceptionHandler() {
         this.server.use(async (err, req, res, next) => {
             if (err.isBoom) {
-                return res.status(err.output.statusCode).json({ error: err.message, ...err.data });
+                return res.status(err.output.statusCode).json({
+                    error: {
+                        message: err.message,
+                        ...err.data
+                    }
+                });
             }
 
             if (process.env.NODE_ENV === 'development') {
@@ -55,7 +60,11 @@ class App {
                 return res.status(500).json(errors);
             }
 
-            return res.status(500).json({ error: 'Internal server error' });
+            return res.status(500).json({
+                error: {
+                    message: 'Ocorreu um erro.'
+                }
+            });
         });
     }
 }
