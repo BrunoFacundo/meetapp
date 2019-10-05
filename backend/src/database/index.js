@@ -14,6 +14,7 @@ class Database {
 
         this.init();
         this.associate();
+        this.hook();
     }
 
     init() {
@@ -24,6 +25,14 @@ class Database {
         models.forEach(model => {
             if (model.associate) {
                 model.associate(this.connection.models);
+            }
+        });
+    }
+
+    hook() {
+        models.forEach(model => {
+            if (model.hook) {
+                model.hook();
             }
         });
     }

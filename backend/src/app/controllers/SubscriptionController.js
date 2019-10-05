@@ -61,13 +61,15 @@ class SubscriptionController {
             description: subscription.meetup.description,
             location: subscription.meetup.location,
             date: subscription.meetup.date,
-            file: {
-                id: subscription.meetup.file.id,
-                url: subscription.meetup.file.url
-            },
+            past: subscription.meetup.past,
             user: {
                 id: subscription.meetup.user.id,
                 name: subscription.meetup.user.name
+            },
+            file: {
+                id: subscription.meetup.file.id,
+                url: subscription.meetup.file.url,
+                name: subscription.meetup.file.name
             }
         }));
 
@@ -81,8 +83,6 @@ class SubscriptionController {
             userId: req.userId,
             meetupId: req.params.meetupId
         });
-
-        Cache.invalidate(`user:${req.userId}:subscriptions`);
 
         return res.json({
             id: subscription.id,
@@ -111,8 +111,6 @@ class SubscriptionController {
         }
 
         await subscription.destroy();
-
-        Cache.invalidate(`user:${req.userId}:subscriptions`);
 
         return res.send();
     }

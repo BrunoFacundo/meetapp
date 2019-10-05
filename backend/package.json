@@ -11,7 +11,7 @@
         "build": "sucrase src -d dist --transforms imports",
         "migrate": "sequelize db:migrate",
         "seed": "sequelize db:seed:all",
-        "reset-db": "sequelize db:migrate:undo:all"
+        "reset-db": "sequelize db:migrate:undo:all && yarn migrate && yarn seed"
     },
     "dependencies": {
         "@hapi/boom": "^8.0.1",

@@ -36,8 +36,7 @@ class MeetupController {
                 },
                 {
                     model: File,
-                    as: 'file',
-                    attributes: ['id', 'url', 'path']
+                    as: 'file'
                 }
             ],
             limit,
@@ -60,7 +59,8 @@ class MeetupController {
                 },
                 file: {
                     id: meetup.file.id,
-                    url: meetup.file.url
+                    url: meetup.file.url,
+                    name: meetup.file.name
                 }
             })),
             pagination: {
@@ -85,18 +85,17 @@ class MeetupController {
         });
         const file = await meetup.getFile();
 
-        await Cache.invalidatePrefix('meetups');
-        await Cache.invalidate(`user:${req.userId}:organizing`);
-
         return res.json({
             id: meetup.id,
             title: meetup.title,
             description: meetup.description,
             location: meetup.location,
             date: meetup.date,
+            past: meetup.past,
             file: {
                 id: file.id,
-                url: file.url
+                url: file.url,
+                name: file.name
             }
         });
     }
@@ -112,19 +111,12 @@ class MeetupController {
             throw Boom.unauthorized('Você não é o proprietário dessa meetup.');
         }
 
-        if (isBefore(parseISO(req.body.date), new Date())) {
-            throw Boom.badRequest('Data da meetup já passou.');
-        }
-
         if (meetup.past) {
-            throw Boom.badRequest('Não é possível atualizar meetup passada.');
+            throw Boom.badRequest('Não é possível atualizar meetup que já foi realizada.');
         }
 
         await meetup.update(req.body);
         const file = await meetup.getFile();
-
-        await Cache.invalidatePrefix('meetups');
-        await Cache.invalidate(`user:${req.userId}:organizing`);
 
         return res.json({
             id: meetup.id,
@@ -132,9 +124,11 @@ class MeetupController {
             description: meetup.description,
             location: meetup.location,
             date: meetup.date,
+            past: meetup.past,
             file: {
                 id: file.id,
-                url: file.url
+                url: file.url,
+                name: file.name
             }
         });
     }
@@ -151,13 +145,10 @@ class MeetupController {
         }
 
         if (meetup.past) {
-            throw Boom.badRequest('Não é possível deletar meetup passada.');
+            throw Boom.badRequest('Não é possível cancelar meetup que já foi realizada.');
         }
 
         await meetup.destroy();
-
-        await Cache.invalidatePrefix('meetups');
-        await Cache.invalidate(`user:${req.userId}:organizing`);
 
         return res.send();
     }
