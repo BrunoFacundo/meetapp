@@ -8,6 +8,7 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
+    height: 100%;
     margin: 0 auto;
     max-width: 900px;
 `;
@@ -47,6 +48,9 @@ export const Header = styled.header`
 `;
 
 export const Meetups = styled.ul`
+    height: calc(100% - 94px);
+    overflow: auto;
+
     li {
         display: flex;
         align-items: center;
