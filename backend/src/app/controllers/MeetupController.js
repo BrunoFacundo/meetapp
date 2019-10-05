@@ -31,8 +31,7 @@ class MeetupController {
             include: [
                 {
                     model: User,
-                    as: 'user',
-                    attributes: ['id', 'name']
+                    as: 'user'
                 },
                 {
                     model: File,

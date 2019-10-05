@@ -32,13 +32,11 @@ class SubscriptionController {
                     include: [
                         {
                             model: User,
-                            as: 'user',
-                            attributes: ['id', 'name']
+                            as: 'user'
                         },
                         {
                             model: File,
-                            as: 'file',
-                            attributes: ['id', 'url', 'path']
+                            as: 'file'
                         }
                     ]
                 }
