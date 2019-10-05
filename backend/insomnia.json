@@ -1,8 +1,8 @@
 {
     "_type": "export",
     "__export_format": 4,
-    "__export_date": "2019-10-01T11:29:47.974Z",
-    "__export_source": "insomnia.desktop.app:v6.6.2",
+    "__export_date": "2019-10-05T17:03:53.850Z",
+    "__export_source": "insomnia.desktop.app:v7.0.0",
     "resources": [
         {
             "_id": "req_068bc5e35f134f558f4f97f126d9e68f",
@@ -53,7 +53,7 @@
         {
             "_id": "req_cf9e24f6d3ef46789fb2cf3ac48465e7",
             "authentication": {
-                "token": "{{ token  }}",
+                "token": "{{ token_user  }}",
                 "type": "bearer"
             },
             "body": {},
@@ -63,7 +63,7 @@
             "isPrivate": false,
             "metaSortKey": -1560975857499,
             "method": "GET",
-            "modified": 1560980348063,
+            "modified": 1570294776975,
             "name": "List",
             "parameters": [],
             "parentId": "fld_82ab844aeb9249b5944d53151d35df1a",
@@ -90,7 +90,7 @@
         {
             "_id": "req_62c20b7e98ba4f85a9763cab636ee046",
             "authentication": {
-                "token": "{{ token  }}",
+                "token": "{{ token_user  }}",
                 "type": "bearer"
             },
             "body": {},
@@ -100,8 +100,8 @@
             "isPrivate": false,
             "metaSortKey": -1560975857449,
             "method": "POST",
-            "modified": 1566676899241,
-            "name": "Store",
+            "modified": 1570294780960,
+            "name": "Create",
             "parameters": [],
             "parentId": "fld_82ab844aeb9249b5944d53151d35df1a",
             "settingDisableRenderRequestBody": false,
@@ -115,7 +115,7 @@
         {
             "_id": "req_bb141010ab1f4154aaa68343fe391059",
             "authentication": {
-                "token": "{{ token  }}",
+                "token": "{{ token_user  }}",
                 "type": "bearer"
             },
             "body": {},
@@ -125,7 +125,7 @@
             "isPrivate": false,
             "metaSortKey": -1560975857399,
             "method": "DELETE",
-            "modified": 1569929357313,
+            "modified": 1570294785209,
             "name": "Delete",
             "parameters": [],
             "parentId": "fld_82ab844aeb9249b5944d53151d35df1a",
@@ -150,13 +150,13 @@
             "isPrivate": false,
             "metaSortKey": -1560972409630,
             "method": "GET",
-            "modified": 1569889030239,
+            "modified": 1570294986208,
             "name": "List",
             "parameters": [
                 {
                     "id": "pair_4f0a4b446243412cb79f14e636609314",
                     "name": "date",
-                    "value": "2019-10-01"
+                    "value": "2019-10-05"
                 },
                 {
                     "disabled": false,
@@ -194,7 +194,7 @@
             },
             "body": {
                 "mimeType": "application/json",
-                "text": "{\n\t\"title\": \"Meetup de React Native\",\n\t\"description\": \"O Meetup de React Native é um evento que reúne a comunidade de desenvolvimento mobile utilizando React a fim de compartilhar conhecimento. Todos são convidados.\",\n\t\"location\": \"Rua Guilherme Gembala, 260\",\n\t\"date\": \"2019-10-01 10:00:00\",\n\t\"file_id\": 1\n}"
+                "text": "{\n\t\"title\": \"Meetup de React Native\",\n\t\"description\": \"O Meetup de React Native é um evento que reúne a comunidade de desenvolvimento mobile utilizando React a fim de compartilhar conhecimento. Todos são convidados.\",\n\t\"location\": \"Rua Guilherme Gembala, 260\",\n\t\"date\": \"2019-10-05 17:00:00\",\n\t\"file_id\": 1\n}"
             },
             "created": 1560972409580,
             "description": "",
@@ -208,7 +208,7 @@
             "isPrivate": false,
             "metaSortKey": -1560972409580,
             "method": "POST",
-            "modified": 1569887850466,
+            "modified": 1570294969696,
             "name": "Create",
             "parameters": [],
             "parentId": "fld_2ec994bb4a8a4f1ab9c9e0b91730be27",
@@ -352,7 +352,7 @@
             "isPrivate": false,
             "metaSortKey": -1556063207557,
             "method": "POST",
-            "modified": 1569888341811,
+            "modified": 1570294763740,
             "name": "Create",
             "parameters": [],
             "parentId": "fld_723df42f7bdf45b79689e0a22fff01f7",
@@ -459,17 +459,19 @@
             "created": 1560971763786,
             "data": {
                 "base_url": "http://localhost:3333",
-                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTY5ODg4NzczLCJleHAiOjE1NzA0OTM1NzN9.eV9Cxv8BqvgdBNc0Ad3Bdm6z3lQ4T99gngVv6kyMsyc"
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTcwMjk0Njk2LCJleHAiOjE1NzA4OTk0OTZ9.7eYkh6dNgDRSH2U1uCPZ1a0R1J2NVWhZXjnLNA6o7e0",
+                "token_user": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNTcwMjk0NzE3LCJleHAiOjE1NzA4OTk1MTd9.1msb0-uy0MqyOIXV8YpClAElXNVduDLCrVABTg7y70w"
             },
             "dataPropertyOrder": {
                 "&": [
                     "base_url",
-                    "token"
+                    "token",
+                    "token_user"
                 ]
             },
             "isPrivate": false,
             "metaSortKey": 1560971763786,
-            "modified": 1569888778302,
+            "modified": 1570294728148,
             "name": "Base Environment",
             "parentId": "wrk_f190354a73094ffa85051aeda9e64c86",
             "_type": "environment"
