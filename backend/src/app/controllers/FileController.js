@@ -11,7 +11,8 @@ class FileController {
 
         return res.json({
             id: file.id,
-            url: file.url
+            url: file.url,
+            name: file.name
         });
     }
 }

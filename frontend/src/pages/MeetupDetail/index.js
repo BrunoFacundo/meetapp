@@ -30,13 +30,20 @@ export default function MeetupDetail({ history, location }) {
         <Container>
             <Content>
                 <Header>
-                    <strong>{meetup.title}</strong>
+                    <strong>
+                        {meetup.past && '[JÁ REALIZADA] '}
+                        {meetup.title}
+                    </strong>
                     <div>
-                        <Button type="button" color="#4DBAF9" onClick={() => handleEdit(meetup)}>
+                        <Button type="button" color="#4DBAF9" disabled={meetup.past} onClick={() => handleEdit(meetup)}>
                             <MdModeEdit color="#fff" size={24} />
                             Editar
                         </Button>
-                        <Button type="button" color="#f94d6a" onClick={() => handleCancel(meetup.id)}>
+                        <Button
+                            type="button"
+                            color="#f94d6a"
+                            disabled={meetup.past}
+                            onClick={() => handleCancel(meetup.id)}>
                             <MdDeleteForever color="#fff" size={24} />
                             Cancelar
                         </Button>

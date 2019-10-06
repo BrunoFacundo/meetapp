@@ -16,8 +16,28 @@ export const Content = styled.div`
     align-items: center;
 
     nav {
+        display: flex;
+        align-items: center;
+
         img {
             width: 35px;
+        }
+
+        div {
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+            color: #ffffff;
+            cursor: pointer;
+
+            &:hover {
+                opacity: 0.8;
+            }
+
+            span {
+                margin-left: 5px;
+                font-weight: bold;
+            }
         }
     }
 

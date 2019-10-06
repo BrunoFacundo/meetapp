@@ -18,7 +18,6 @@ class OrganizingController {
                 {
                     model: File,
                     as: 'file',
-                    attributes: ['id', 'url', 'path']
                 }
             ]
         });
@@ -29,9 +28,11 @@ class OrganizingController {
             description: meetup.description,
             location: meetup.location,
             date: meetup.date,
+            past: meetup.past,
             file: {
                 id: meetup.file.id,
-                url: meetup.file.url
+                url: meetup.file.url,
+                name: meetup.file.name
             }
         }));
 

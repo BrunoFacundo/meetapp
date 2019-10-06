@@ -21,7 +21,7 @@ export default function BannerInput({ name }) {
     function handleChange(e) {
         const file = e.target.files && e.target.files.length > 0 ? e.target.files[0] : null;
         if (file) {
-            var reader = new FileReader();
+            const reader = new FileReader();
             reader.onload = e => {
                 setFile(`${file.name}|${e.target.result}`);
             };

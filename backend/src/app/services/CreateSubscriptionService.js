@@ -12,8 +12,7 @@ class CreateSubscriptionService {
             include: [
                 {
                     model: User,
-                    as: 'user',
-                    attributes: ['id', 'name', 'email']
+                    as: 'user'
                 }
             ]
         });
@@ -28,6 +27,17 @@ class CreateSubscriptionService {
 
         if (meetup.past) {
             throw Boom.badRequest('Não é possível se inscrever em meetup que já passaram.');
+        }
+
+        const checkSubscription = await Subscription.findOne({
+            where: {
+                user_id: user.id,
+                meetup_id: meetup.id
+            }
+        });
+
+        if (checkSubscription) {
+            throw Boom.badRequest('Você já estar inscrito nessa meetup.');
         }
 
         const checkDate = await Subscription.findOne({

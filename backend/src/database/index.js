@@ -1,4 +1,3 @@
-import mongoose from 'mongoose';
 import Sequelize from 'sequelize';
 import File from '../app/models/File';
 import Meetup from '../app/models/Meetup';
@@ -14,6 +13,7 @@ class Database {
 
         this.init();
         this.associate();
+        this.hook();
     }
 
     init() {
@@ -28,12 +28,11 @@ class Database {
         });
     }
 
-    mongo() {
-        const { MONGO_HOST, MONGO_PORT, MONGO_NAME } = process.env;
-
-        this.mongoConnection = mongoose.connect(`mongodb://${MONGO_HOST}:${MONGO_PORT}/${MONGO_NAME}`, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true
+    hook() {
+        models.forEach(model => {
+            if (model.hook) {
+                model.hook();
+            }
         });
     }
 }

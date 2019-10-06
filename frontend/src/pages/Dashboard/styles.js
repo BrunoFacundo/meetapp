@@ -8,6 +8,7 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
+    height: 100%;
     margin: 0 auto;
     max-width: 900px;
 `;
@@ -46,40 +47,53 @@ export const Header = styled.header`
     }
 `;
 
-export const Meetups = styled.ul`
-    li {
+export const EmptyList = styled.div`
+    height: calc(100% - 94px);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+`;
+
+export const MeetupList = styled.ul`
+    height: calc(100% - 94px);
+    overflow: auto;
+`;
+
+export const MeetupItem = styled.li`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 20px 30px;
+    border-radius: 4px;
+    transition: background 0.2s;
+    color: #fff;
+    cursor: pointer;
+
+    &:hover {
+        background: rgba(0, 0, 0, 0.3);
+    }
+
+    strong {
+        opacity: ${props => (props.past ? 0.5 : 1)};
+    }
+
+    div {
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        background: rgba(0, 0, 0, 0.2);
-        padding: 20px 30px;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: background 0.2s;
 
-        &:hover {
-            background: rgba(0, 0, 0, 0.3);
+        span {
+            opacity: ${props => (props.past ? 0.5 : 0.6)};
         }
 
-        strong {
-            color: #fff;
-        }
-
-        div {
-            display: flex;
-            align-items: center;
-
-            span {
-                color: rgba(255, 255, 255, 0.6);
-            }
-
-            svg {
-                margin-left: 40px;
-            }
+        svg {
+            margin-left: 40px;
         }
     }
 
-    li + li {
+    & + li {
         margin-top: 10px;
     }
 `;
