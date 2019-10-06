@@ -27,6 +27,7 @@ module.exports = {
         'no-param-reassign': 'off',
         'no-underscore-dangle': 'off',
         'no-plusplus': 'off',
+        'no-shadow': 'off',
         'jsx-a11y/no-noninteractive-element-interactions': 'off',
         'jsx-a11y/no-static-element-interactions': 'off',
         'jsx-a11y/click-events-have-key-events': 'off',

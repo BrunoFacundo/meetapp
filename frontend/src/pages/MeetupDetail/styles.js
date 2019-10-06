@@ -36,6 +36,8 @@ export const Button = styled.button`
     display: flex;
     align-items: center;
     background: ${props => props.color};
+    opacity: ${props => (props.disabled ? 0.5 : 1)};
+    cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
     font-weight: bold;
     color: #fff;
     border: 0;

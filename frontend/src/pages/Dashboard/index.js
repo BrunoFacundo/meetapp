@@ -3,7 +3,7 @@ import pt from 'date-fns/locale/pt';
 import React, { useEffect, useState } from 'react';
 import { MdAddCircleOutline, MdKeyboardArrowRight } from 'react-icons/md';
 import api from '~/services/api';
-import { Container, Content, Header, Meetups } from './styles';
+import { Container, Content, Header, MeetupItem, MeetupList } from './styles';
 
 export default function Dashboard({ history }) {
     const [meetups, setMeetups] = useState([]);
@@ -42,17 +42,20 @@ export default function Dashboard({ history }) {
                     </button>
                 </Header>
 
-                <Meetups>
+                <MeetupList>
                     {meetups.map(meetup => (
-                        <li key={meetup.id} onClick={() => handleMeetupDetail(meetup)}>
-                            <strong>{meetup.title}</strong>
+                        <MeetupItem key={meetup.id} past={meetup.past} onClick={() => handleMeetupDetail(meetup)}>
+                            <strong>
+                                {meetup.past && '[JÁ REALIZADA] '}
+                                {meetup.title}
+                            </strong>
                             <div>
-                                <span> {meetup.dateFormatted}</span>
+                                <span>{meetup.dateFormatted}</span>
                                 <MdKeyboardArrowRight color="#fff" size={24} />
                             </div>
-                        </li>
+                        </MeetupItem>
                     ))}
-                </Meetups>
+                </MeetupList>
             </Content>
         </Container>
     );
