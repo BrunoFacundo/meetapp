@@ -28,6 +28,7 @@ module.exports = {
         'no-underscore-dangle': 'off',
         'no-plusplus': 'off',
         'jsx-a11y/no-noninteractive-element-interactions': 'off',
+        'jsx-a11y/no-static-element-interactions': 'off',
         'jsx-a11y/click-events-have-key-events': 'off',
         'react/prop-types': 'off',
         'react-hooks/rules-of-hooks': 'error',

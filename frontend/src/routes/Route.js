@@ -4,7 +4,7 @@ import AuthLayout from '~/pages/_layouts/auth';
 import DefaultLayout from '~/pages/_layouts/default';
 import { store } from '~/store';
 
-export default function RouteWrapper({ component: Component, isPrivate = false, ...rest }) {
+export default function RouteWrapper({ component: Component, isPrivate = false, back = false, ...rest }) {
     const { signed } = store.getState().auth;
 
     if (!signed && isPrivate) {
@@ -21,7 +21,7 @@ export default function RouteWrapper({ component: Component, isPrivate = false, 
         <Route
             {...rest}
             render={props => (
-                <Layout>
+                <Layout back={back}>
                     <Component {...props} />
                 </Layout>
             )}
