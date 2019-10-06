@@ -47,6 +47,15 @@ export const Header = styled.header`
     }
 `;
 
+export const EmptyList = styled.div`
+    height: calc(100% - 94px);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+`;
+
 export const MeetupList = styled.ul`
     height: calc(100% - 94px);
     overflow: auto;
