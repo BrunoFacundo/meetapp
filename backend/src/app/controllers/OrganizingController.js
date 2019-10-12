@@ -17,7 +17,7 @@ class OrganizingController {
             include: [
                 {
                     model: File,
-                    as: 'file',
+                    as: 'file'
                 }
             ]
         });
