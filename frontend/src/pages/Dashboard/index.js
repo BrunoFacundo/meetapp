@@ -3,9 +3,10 @@ import pt from 'date-fns/locale/pt';
 import React, { useEffect, useState } from 'react';
 import { MdAddCircleOutline, MdKeyboardArrowRight } from 'react-icons/md';
 import api from '~/services/api';
-import { Container, Content, EmptyList, Header, MeetupItem, MeetupList } from './styles';
+import { Container, Content, EmptyList, Header, LoadingList, MeetupItem, MeetupList } from './styles';
 
 export default function Dashboard({ history }) {
+    const [loading, setLoading] = useState(true);
     const [meetups, setMeetups] = useState([]);
 
     useEffect(() => {
@@ -18,6 +19,7 @@ export default function Dashboard({ history }) {
             }));
 
             setMeetups(data);
+            setLoading(false);
         }
 
         loadMeetups();
@@ -42,9 +44,11 @@ export default function Dashboard({ history }) {
                     </button>
                 </Header>
 
-                {meetups.length === 0 ? (
-                    <EmptyList>Nenhuma meetup cadastrada.</EmptyList>
-                ) : (
+                {loading && <LoadingList />}
+
+                {!loading && meetups.length === 0 && <EmptyList>Nenhuma meetup cadastrada.</EmptyList>}
+
+                {meetups.length > 0 && (
                     <MeetupList>
                         {meetups.map(meetup => (
                             <MeetupItem key={meetup.id} past={meetup.past} onClick={() => handleMeetupDetail(meetup)}>
