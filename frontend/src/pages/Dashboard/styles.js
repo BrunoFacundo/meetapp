@@ -1,5 +1,6 @@
 import { darken } from 'polished';
 import styled from 'styled-components';
+import Loading from '~/components/Loading';
 
 export const Container = styled.div`
     height: calc(100% - 80px);
@@ -45,6 +46,13 @@ export const Header = styled.header`
             margin-right: 5px;
         }
     }
+`;
+
+export const LoadingList = styled(Loading)`
+    height: calc(100% - 94px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `;
 
 export const EmptyList = styled.div`
