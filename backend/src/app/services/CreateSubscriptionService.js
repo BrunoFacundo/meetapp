@@ -26,7 +26,7 @@ class CreateSubscriptionService {
         }
 
         if (meetup.past) {
-            throw Boom.badRequest('Não é possível se inscrever em meetup que já passaram.');
+            throw Boom.badRequest('Não é possível se inscrever em meetup que já foi realizada.');
         }
 
         const checkSubscription = await Subscription.findOne({
@@ -37,7 +37,7 @@ class CreateSubscriptionService {
         });
 
         if (checkSubscription) {
-            throw Boom.badRequest('Você já estar inscrito nessa meetup.');
+            throw Boom.badRequest('Você já está inscrito nessa meetup.');
         }
 
         const checkDate = await Subscription.findOne({
