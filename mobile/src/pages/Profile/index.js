@@ -38,14 +38,14 @@ export default function Profile() {
         Keyboard.dismiss();
         let errors = false;
 
-        if (name.trim().length == 0) {
+        if (name.trim().length === 0) {
             errors = true;
             setNameError(true);
         } else {
             setNameError(false);
         }
 
-        if (email.trim().length == 0) {
+        if (email.trim().length === 0) {
             errors = true;
             setEmailError(true);
         } else {
@@ -53,14 +53,14 @@ export default function Profile() {
         }
 
         if (oldPassword.trim().length > 0) {
-            if (password.trim().length == 0) {
+            if (password.trim().length === 0) {
                 errors = true;
                 setPasswordError(true);
             } else {
                 setPasswordError(false);
             }
 
-            if (confirmPassword.trim().length == 0) {
+            if (confirmPassword.trim().length === 0) {
                 errors = true;
                 setConfirmPasswordError(true);
             } else {

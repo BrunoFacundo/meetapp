@@ -47,6 +47,7 @@ function Subscription({ isFocused }) {
 
     useEffect(() => {
         if (isFocused) {
+            setMeetups([]);
             loadMeetups();
         }
     }, [isFocused]);
@@ -55,11 +56,14 @@ function Subscription({ isFocused }) {
         try {
             await api.delete(`/meetups/${meetup.id}/unsubscriptions`);
 
-            setMeetups(meetups.filter(item => item.id != meetup.id));
+            setMeetups(meetups.filter(item => item.id !== meetup.id));
 
             Alert.alert('', 'Incrição cancelada com sucesso.');
         } catch (err) {
-            Alert.alert('', err.isAxiosError ? err.response.data.error : 'Não foi possível cancelar a inscrição.');
+            Alert.alert(
+                '',
+                err.isAxiosError ? err.response.data.error.message : 'Não foi possível cancelar a inscrição.'
+            );
         }
     }
 
@@ -72,7 +76,7 @@ function Subscription({ isFocused }) {
         <Background>
             <Header />
             <Container>
-                {!loading && meetups.length == 0 && (
+                {!loading && meetups.length === 0 && (
                     <Center>
                         <EmptyListText>Você não tem inscrição feita.</EmptyListText>
                     </Center>
