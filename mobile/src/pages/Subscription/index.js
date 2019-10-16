@@ -6,6 +6,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { withNavigationFocus } from 'react-navigation';
 import Background from '~/components/Background';
 import Header from '~/components/Header';
+import TabBarIcon from '~/components/TabBarIcon';
 import api from '~/services/api';
 import {
     Center,
@@ -123,7 +124,7 @@ function Subscription({ isFocused }) {
 
 Subscription.navigationOptions = {
     tabBarLabel: 'Inscrições',
-    tabBarIcon: ({ tintColor }) => <Icon name="local-offer" size={20} color={tintColor} />
+    tabBarIcon: ({ tintColor }) => <TabBarIcon name="local-offer" color={tintColor} />
 };
 
 export default withNavigationFocus(Subscription);

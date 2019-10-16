@@ -5,6 +5,7 @@ import { ActivityIndicator, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Background from '~/components/Background';
 import Header from '~/components/Header';
+import TabBarIcon from '~/components/TabBarIcon';
 import api from '~/services/api';
 import {
     Center,
@@ -158,5 +159,5 @@ export default function Dashboard() {
 
 Dashboard.navigationOptions = {
     tabBarLabel: 'Meetups',
-    tabBarIcon: ({ tintColor }) => <Icon name="format-list-bulleted" size={20} color={tintColor} />
+    tabBarIcon: ({ tintColor }) => <TabBarIcon name="format-list-bulleted" color={tintColor} />
 };

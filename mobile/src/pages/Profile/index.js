@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Alert, Keyboard } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import { useDispatch, useSelector } from 'react-redux';
 import Background from '~/components/Background';
 import Header from '~/components/Header';
+import TabBarIcon from '~/components/TabBarIcon';
 import { signOut } from '~/store/modules/auth/actions';
 import { updateProfileRequest } from '~/store/modules/user/actions';
 import { Container, Form, FormInput, LogoutButton, Separator, SubmitButton } from './styles';
@@ -162,5 +162,5 @@ export default function Profile() {
 
 Profile.navigationOptions = {
     tabBarLabel: 'Meu perfil',
-    tabBarIcon: ({ tintColor }) => <Icon name="person" size={20} color={tintColor} />
+    tabBarIcon: ({ tintColor }) => <TabBarIcon name="person" color={tintColor} />
 };
