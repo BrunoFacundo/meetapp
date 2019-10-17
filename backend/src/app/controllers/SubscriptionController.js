@@ -105,7 +105,7 @@ class SubscriptionController {
         });
 
         if (!subscription) {
-            throw Boom.badRequest('Você não estar inscrito nessa meetup.');
+            throw Boom.badRequest('Você não está inscrito nessa meetup.');
         }
 
         await subscription.destroy();

@@ -5,6 +5,7 @@ import { ActivityIndicator, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Background from '~/components/Background';
 import Header from '~/components/Header';
+import TabBarIcon from '~/components/TabBarIcon';
 import api from '~/services/api';
 import {
     Center,
@@ -62,24 +63,25 @@ export default function Dashboard() {
     }
 
     useEffect(() => {
-        setMeetups([]);
         loadMeetups();
-    }, [date]);
+    }, [date]); // eslint-disable-line
 
     async function handleSubscription(meetup) {
         try {
             await api.post(`/meetups/${meetup.id}/subscriptions`);
             Alert.alert('', 'Incrição realizada com sucesso.');
         } catch (err) {
-            Alert.alert('', err.isAxiosError ? err.response.data.error : 'Não foi possível fazer a inscrição.');
+            Alert.alert('', err.isAxiosError ? err.response.data.error.message : 'Não foi possível fazer a inscrição.');
         }
     }
 
     function handlePrev() {
+        setMeetups([]);
         setDate(subDays(date, 1));
     }
 
     function handleNext() {
+        setMeetups([]);
         setDate(addDays(date, 1));
     }
 
@@ -105,15 +107,15 @@ export default function Dashboard() {
                     <Icon name="keyboard-arrow-right" color="#fff" size={30} onPress={handleNext} />
                 </Title>
 
-                {!loading && meetups.length == 0 && (
-                    <Center>
-                        <EmptyListText>Nenhuma meetup diponível.</EmptyListText>
-                    </Center>
-                )}
-
                 {!refreshing && !moreLoading && loading && (
                     <Center>
                         <ActivityIndicator size="large" color="#f94d6a" />
+                    </Center>
+                )}
+
+                {!refreshing && !moreLoading && !loading && meetups.length === 0 && (
+                    <Center>
+                        <EmptyListText>Nenhuma meetup diponível.</EmptyListText>
                     </Center>
                 )}
 
@@ -157,5 +159,5 @@ export default function Dashboard() {
 
 Dashboard.navigationOptions = {
     tabBarLabel: 'Meetups',
-    tabBarIcon: ({ tintColor }) => <Icon name="format-list-bulleted" size={20} color={tintColor} />
+    tabBarIcon: ({ tintColor }) => <TabBarIcon name="format-list-bulleted" color={tintColor} />
 };

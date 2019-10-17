@@ -25,9 +25,16 @@ export default (isSigned = false) =>
                         tabBarOptions: {
                             keyboardHidesTabBar: true,
                             activeTintColor: '#FFF',
-                            inactiveTintColor: 'rgba(255, 255, 255, 0.6)',
+                            inactiveTintColor: 'rgba(255, 255, 255, 0.3)',
                             style: {
-                                backgroundColor: '#2B1A2F'
+                                backgroundColor: '#2B1A2F',
+                                height: 64,
+                                paddingVertical: 8,
+                                borderTopWidth: 0
+                            },
+                            labelStyle: {
+                                fontSize: 16,
+                                marginTop: 8
                             }
                         }
                     }

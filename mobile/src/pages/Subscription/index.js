@@ -6,6 +6,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { withNavigationFocus } from 'react-navigation';
 import Background from '~/components/Background';
 import Header from '~/components/Header';
+import TabBarIcon from '~/components/TabBarIcon';
 import api from '~/services/api';
 import {
     Center,
@@ -47,6 +48,7 @@ function Subscription({ isFocused }) {
 
     useEffect(() => {
         if (isFocused) {
+            setMeetups([]);
             loadMeetups();
         }
     }, [isFocused]);
@@ -55,11 +57,14 @@ function Subscription({ isFocused }) {
         try {
             await api.delete(`/meetups/${meetup.id}/unsubscriptions`);
 
-            setMeetups(meetups.filter(item => item.id != meetup.id));
+            setMeetups(meetups.filter(item => item.id !== meetup.id));
 
             Alert.alert('', 'Incrição cancelada com sucesso.');
         } catch (err) {
-            Alert.alert('', err.isAxiosError ? err.response.data.error : 'Não foi possível cancelar a inscrição.');
+            Alert.alert(
+                '',
+                err.isAxiosError ? err.response.data.error.message : 'Não foi possível cancelar a inscrição.'
+            );
         }
     }
 
@@ -72,7 +77,7 @@ function Subscription({ isFocused }) {
         <Background>
             <Header />
             <Container>
-                {!loading && meetups.length == 0 && (
+                {!loading && meetups.length === 0 && (
                     <Center>
                         <EmptyListText>Você não tem inscrição feita.</EmptyListText>
                     </Center>
@@ -119,7 +124,7 @@ function Subscription({ isFocused }) {
 
 Subscription.navigationOptions = {
     tabBarLabel: 'Inscrições',
-    tabBarIcon: ({ tintColor }) => <Icon name="local-offer" size={20} color={tintColor} />
+    tabBarIcon: ({ tintColor }) => <TabBarIcon name="local-offer" color={tintColor} />
 };
 
 export default withNavigationFocus(Subscription);

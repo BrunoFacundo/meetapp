@@ -26,21 +26,21 @@ export default function SignUp({ navigation }) {
         Keyboard.dismiss();
         let errors = false;
 
-        if (name.trim().length == 0) {
+        if (name.trim().length === 0) {
             errors = true;
             setNameError(true);
         } else {
             setNameError(false);
         }
 
-        if (email.trim().length == 0) {
+        if (email.trim().length === 0) {
             errors = true;
             setEmailError(true);
         } else {
             setEmailError(false);
         }
 
-        if (password.trim().length == 0) {
+        if (password.trim().length === 0) {
             errors = true;
             setPasswordError(true);
         } else {
