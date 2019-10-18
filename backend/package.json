@@ -8,7 +8,7 @@
         "start": "node dist/server.js",
         "dev": "nodemon src/server.js",
         "queue": "nodemon src/queue.js",
-        "build": "sucrase src -d dist --transforms imports",
+        "build": "sucrase src -d dist --transforms imports && cpx src/**/*.hbs dist",
         "migrate": "sequelize db:migrate",
         "seed": "sequelize db:seed:all",
         "reset-db": "sequelize db:migrate:undo:all && yarn migrate && yarn seed"
@@ -39,6 +39,7 @@
         "yup": "^0.27.0"
     },
     "devDependencies": {
+        "cpx": "^1.5.0",
         "eslint": "^6.3.0",
         "eslint-config-airbnb-base": "^14.0.0",
         "eslint-config-prettier": "^6.3.0",
