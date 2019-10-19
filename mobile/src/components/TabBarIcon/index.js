@@ -6,7 +6,7 @@ export default function TabBarIcon({ name, color }) {
         <Icon
             name={name}
             color={color}
-            size={24}
+            size={20}
             style={{
                 position: 'absolute',
                 top: 0

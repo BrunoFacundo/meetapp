@@ -5,7 +5,7 @@ import Button from '~/components/Button';
 export const Container = styled.SafeAreaView`
     flex: 1;
     align-items: center;
-    padding: 20px 20px 0;
+    padding: 16px 16px 0;
 `;
 
 export const Center = styled.View`
@@ -31,7 +31,7 @@ export const MeetupItem = styled.View`
     padding: 15px;
     border-radius: 4px;
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
     overflow: hidden;
 `;
 
