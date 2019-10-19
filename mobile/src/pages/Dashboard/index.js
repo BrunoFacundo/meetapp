@@ -69,6 +69,17 @@ export default function Dashboard() {
     async function handleSubscription(meetup) {
         try {
             await api.post(`/meetups/${meetup.id}/subscriptions`);
+
+            setMeetups(
+                meetups.map(item => {
+                    if (item.id === meetup.id) {
+                        item.subscriber = true;
+                    }
+
+                    return item;
+                })
+            );
+
             Alert.alert('', 'Incrição realizada com sucesso.');
         } catch (err) {
             Alert.alert('', err.isAxiosError ? err.response.data.error.message : 'Não foi possível fazer a inscrição.');
@@ -146,9 +157,11 @@ export default function Dashboard() {
                                 <Icon name="person" color="#999" size={16} />
                                 <MeetupInfoText>Organizador: {meetup.user.name}</MeetupInfoText>
                             </MeetupInfo>
-                            <SubscriptionButton onPress={() => handleSubscription(meetup)}>
-                                <SubscriptionButtonText>Realizar incrição</SubscriptionButtonText>
-                            </SubscriptionButton>
+                            {!meetup.past && !meetup.subscriber && (
+                                <SubscriptionButton onPress={() => handleSubscription(meetup)}>
+                                    <SubscriptionButtonText>Realizar incrição</SubscriptionButtonText>
+                                </SubscriptionButton>
+                            )}
                         </MeetupItem>
                     )}
                 />
