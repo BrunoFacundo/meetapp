@@ -18,7 +18,8 @@ class Subscription extends Model {
 
     static hook() {
         const invalidateCache = async subscription => {
-            Cache.invalidate(`user:${subscription.user_id}:subscriptions`);
+            await Cache.invalidate(`user:${subscription.user_id}:subscriptions`);
+            await Cache.invalidatePrefix('meetups');
         };
 
         this.addHook('beforeCreate', invalidateCache);

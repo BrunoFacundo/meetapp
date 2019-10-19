@@ -85,16 +85,14 @@ export const MeetupItem = styled.li`
     }
 
     strong {
-        opacity: ${props => (props.past ? 0.5 : 1)};
+        span {
+            margin-right: 8px;
+        }
     }
 
     div {
         display: flex;
         align-items: center;
-
-        span {
-            opacity: ${props => (props.past ? 0.5 : 0.6)};
-        }
 
         svg {
             margin-left: 40px;

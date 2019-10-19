@@ -24,10 +24,9 @@ class MeetupController {
                 [Op.between]: [startOfDay(searchDate), endOfDay(searchDate)]
             }
         };
-
         const meetups = await Meetup.findAll({
             where,
-            order: [['date', 'DESC']],
+            order: [['date', 'ASC']],
             include: [
                 {
                     model: User,
@@ -36,6 +35,16 @@ class MeetupController {
                 {
                     model: File,
                     as: 'file'
+                },
+                {
+                    model: User,
+                    as: 'subscribers',
+                    required: false,
+                    where: {
+                        id: {
+                            [Op.eq]: req.userId
+                        }
+                    }
                 }
             ],
             limit,
@@ -52,6 +61,7 @@ class MeetupController {
                 location: meetup.location,
                 date: meetup.date,
                 past: meetup.past,
+                subscriber: meetup.subscribers.length > 0,
                 user: {
                     id: meetup.user.id,
                     name: meetup.user.name

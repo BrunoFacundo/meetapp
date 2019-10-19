@@ -3,6 +3,7 @@ import pt from 'date-fns/locale/pt';
 import React, { useEffect, useMemo, useState } from 'react';
 import { ActivityIndicator, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { withNavigationFocus } from 'react-navigation';
 import Background from '~/components/Background';
 import Header from '~/components/Header';
 import TabBarIcon from '~/components/TabBarIcon';
@@ -23,7 +24,7 @@ import {
     Title
 } from './styles';
 
-export default function Dashboard() {
+function Dashboard({ isFocused }) {
     const [meetups, setMeetups] = useState([]);
     const [date, setDate] = useState(new Date());
     const [page, setPage] = useState(1);
@@ -66,9 +67,27 @@ export default function Dashboard() {
         loadMeetups();
     }, [date]); // eslint-disable-line
 
+    useEffect(() => {
+        if (isFocused) {
+            setMeetups([]);
+            loadMeetups();
+        }
+    }, [isFocused]); // eslint-disable-line
+
     async function handleSubscription(meetup) {
         try {
             await api.post(`/meetups/${meetup.id}/subscriptions`);
+
+            setMeetups(
+                meetups.map(item => {
+                    if (item.id === meetup.id) {
+                        item.subscriber = true;
+                    }
+
+                    return item;
+                })
+            );
+
             Alert.alert('', 'Incrição realizada com sucesso.');
         } catch (err) {
             Alert.alert('', err.isAxiosError ? err.response.data.error.message : 'Não foi possível fazer a inscrição.');
@@ -146,9 +165,11 @@ export default function Dashboard() {
                                 <Icon name="person" color="#999" size={16} />
                                 <MeetupInfoText>Organizador: {meetup.user.name}</MeetupInfoText>
                             </MeetupInfo>
-                            <SubscriptionButton onPress={() => handleSubscription(meetup)}>
-                                <SubscriptionButtonText>Realizar incrição</SubscriptionButtonText>
-                            </SubscriptionButton>
+                            {!meetup.past && !meetup.subscriber && (
+                                <SubscriptionButton onPress={() => handleSubscription(meetup)}>
+                                    <SubscriptionButtonText>Realizar incrição</SubscriptionButtonText>
+                                </SubscriptionButton>
+                            )}
                         </MeetupItem>
                     )}
                 />
@@ -161,3 +182,5 @@ Dashboard.navigationOptions = {
     tabBarLabel: 'Meetups',
     tabBarIcon: ({ tintColor }) => <TabBarIcon name="format-list-bulleted" color={tintColor} />
 };
+
+export default withNavigationFocus(Dashboard);
