@@ -11,9 +11,9 @@ class OrganizingController {
             return res.json(cached);
         }
 
-        const meetups = await Meetup.findAll({
+        let meetups = await Meetup.findAll({
             where: { user_id: req.userId },
-            order: [['date', 'DESC']],
+            order: [['date', 'ASC']],
             include: [
                 {
                     model: File,
@@ -21,6 +21,12 @@ class OrganizingController {
                 }
             ]
         });
+
+        // Order meetups
+        const index = meetups.findIndex(meetup => !meetup.past);
+        const pastMeetups = meetups.slice(0, index).reverse();
+        const nextMeetups = meetups.slice(index);
+        meetups = [...nextMeetups, ...pastMeetups];
 
         const result = meetups.map(meetup => ({
             id: meetup.id,
