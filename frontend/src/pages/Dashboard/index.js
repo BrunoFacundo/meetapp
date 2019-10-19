@@ -51,9 +51,9 @@ export default function Dashboard({ history }) {
                 {meetups.length > 0 && (
                     <MeetupList>
                         {meetups.map(meetup => (
-                            <MeetupItem key={meetup.id} past={meetup.past} onClick={() => handleMeetupDetail(meetup)}>
+                            <MeetupItem key={meetup.id} onClick={() => handleMeetupDetail(meetup)}>
                                 <strong>
-                                    {meetup.past && '[JÁ REALIZADA] '}
+                                    {meetup.past && <span>[JÁ REALIZADA]</span>}
                                     {meetup.title}
                                 </strong>
                                 <div>
