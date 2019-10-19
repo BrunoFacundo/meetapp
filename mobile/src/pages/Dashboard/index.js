@@ -3,6 +3,7 @@ import pt from 'date-fns/locale/pt';
 import React, { useEffect, useMemo, useState } from 'react';
 import { ActivityIndicator, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { withNavigationFocus } from 'react-navigation';
 import Background from '~/components/Background';
 import Header from '~/components/Header';
 import TabBarIcon from '~/components/TabBarIcon';
@@ -23,7 +24,7 @@ import {
     Title
 } from './styles';
 
-export default function Dashboard() {
+function Dashboard({ isFocused }) {
     const [meetups, setMeetups] = useState([]);
     const [date, setDate] = useState(new Date());
     const [page, setPage] = useState(1);
@@ -65,6 +66,13 @@ export default function Dashboard() {
     useEffect(() => {
         loadMeetups();
     }, [date]); // eslint-disable-line
+
+    useEffect(() => {
+        if (isFocused) {
+            setMeetups([]);
+            loadMeetups();
+        }
+    }, [isFocused]); // eslint-disable-line
 
     async function handleSubscription(meetup) {
         try {
@@ -174,3 +182,5 @@ Dashboard.navigationOptions = {
     tabBarLabel: 'Meetups',
     tabBarIcon: ({ tintColor }) => <TabBarIcon name="format-list-bulleted" color={tintColor} />
 };
+
+export default withNavigationFocus(Dashboard);
