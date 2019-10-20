@@ -1,5 +1,6 @@
 import Boom from '@hapi/boom';
 import { endOfDay, isBefore, parseISO, startOfDay } from 'date-fns';
+import { zonedTimeToUtc } from 'date-fns-tz';
 import { Op } from 'sequelize';
 import Cache from '../../lib/Cache';
 import File from '../models/File';
@@ -8,7 +9,8 @@ import User from '../models/User';
 
 class MeetupController {
     async index(req, res) {
-        const searchDate = parseISO(req.query.date);
+        const { timezone } = req.headers;
+        const searchDate = zonedTimeToUtc(parseISO(req.query.date), timezone);
         const page = parseInt(req.query.page || 1);
         const limit = 10;
 
@@ -21,7 +23,10 @@ class MeetupController {
 
         const where = {
             date: {
-                [Op.between]: [startOfDay(searchDate), endOfDay(searchDate)]
+                [Op.between]: [
+                    zonedTimeToUtc(startOfDay(searchDate), timezone),
+                    zonedTimeToUtc(endOfDay(searchDate), timezone)
+                ]
             }
         };
         const meetups = await Meetup.findAll({

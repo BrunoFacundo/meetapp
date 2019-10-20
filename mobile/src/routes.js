@@ -28,12 +28,12 @@ export default (isSigned = false) =>
                             inactiveTintColor: 'rgba(255, 255, 255, 0.3)',
                             style: {
                                 backgroundColor: '#2B1A2F',
-                                height: 64,
+                                height: 58,
                                 paddingVertical: 8,
                                 borderTopWidth: 0
                             },
                             labelStyle: {
-                                fontSize: 16,
+                                fontSize: 14,
                                 marginTop: 8
                             }
                         }
