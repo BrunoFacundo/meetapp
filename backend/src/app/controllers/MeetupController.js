@@ -2,7 +2,6 @@ import Boom from '@hapi/boom';
 import { endOfDay, isBefore, parseISO, startOfDay } from 'date-fns';
 import { zonedTimeToUtc } from 'date-fns-tz';
 import { Op } from 'sequelize';
-import Cache from '../../lib/Cache';
 import File from '../models/File';
 import Meetup from '../models/Meetup';
 import User from '../models/User';
@@ -13,13 +12,6 @@ class MeetupController {
         const searchDate = zonedTimeToUtc(parseISO(req.query.date), timezone);
         const page = parseInt(req.query.page || 1);
         const limit = 10;
-
-        const cachedKey = `meetups:date:${req.query.date}:page:${page}`;
-
-        const cached = await Cache.get(cachedKey);
-        if (cached) {
-            return res.json(cached);
-        }
 
         const where = {
             date: {
@@ -58,7 +50,7 @@ class MeetupController {
 
         const count = await Meetup.count({ where });
 
-        const result = {
+        return res.json({
             list: meetups.map(meetup => ({
                 id: meetup.id,
                 title: meetup.title,
@@ -81,11 +73,7 @@ class MeetupController {
                 count,
                 pages: Math.ceil(count / limit)
             }
-        };
-
-        await Cache.set(cachedKey, result);
-
-        return res.json(result);
+        });
     }
 
     async store(req, res) {
