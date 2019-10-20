@@ -12,7 +12,7 @@ export const Center = styled.View`
     flex: 1;
     align-items: center;
     justify-content: center;
-    margin-top: -15px;
+    margin-top: -16px;
 `;
 
 export const EmptyListText = styled.Text`
@@ -28,7 +28,7 @@ export const MeetupList = styled.FlatList`
 
 export const MeetupItem = styled.View`
     background: #fff;
-    padding: 15px;
+    padding: 16px;
     border-radius: 4px;
     width: 100%;
     margin-bottom: 16px;
@@ -36,20 +36,20 @@ export const MeetupItem = styled.View`
 `;
 
 export const MeetupBanner = styled.Image`
-    width: ${() => Dimensions.get('window').width - 40}px;
+    width: ${() => Dimensions.get('window').width - 32}px;
     height: 180px;
-    margin: -15px 0 0 -15px;
+    margin: -16px 0 0 -16px;
 `;
 
 export const MeetupTitle = styled.Text`
     font-size: 18px;
     font-weight: bold;
     color: #333;
-    margin: 15px 0;
+    margin: 16px 0;
 `;
 
 export const MeetupInfo = styled.View`
-    margin-bottom: 5px;
+    margin-bottom: 6px;
     flex-direction: row;
     align-items: center;
 `;
