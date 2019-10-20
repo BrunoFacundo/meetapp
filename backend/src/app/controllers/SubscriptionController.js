@@ -1,6 +1,5 @@
 import Boom from '@hapi/boom';
 import { Op } from 'sequelize';
-import Cache from '../../lib/Cache';
 import File from '../models/File';
 import Meetup from '../models/Meetup';
 import Subscription from '../models/Subscription';
@@ -9,13 +8,6 @@ import CreateSubscriptionService from '../services/CreateSubscriptionService';
 
 class SubscriptionController {
     async index(req, res) {
-        const cachedKey = `user:${req.userId}:subscriptions`;
-
-        const cached = await Cache.get(cachedKey);
-        if (cached) {
-            return res.json(cached);
-        }
-
         const subscriptions = await Subscription.findAll({
             where: {
                 user_id: req.userId
@@ -53,27 +45,25 @@ class SubscriptionController {
             ]
         });
 
-        const result = subscriptions.map(subscription => ({
-            id: subscription.meetup.id,
-            title: subscription.meetup.title,
-            description: subscription.meetup.description,
-            location: subscription.meetup.location,
-            date: subscription.meetup.date,
-            past: subscription.meetup.past,
-            user: {
-                id: subscription.meetup.user.id,
-                name: subscription.meetup.user.name
-            },
-            file: {
-                id: subscription.meetup.file.id,
-                url: subscription.meetup.file.url,
-                name: subscription.meetup.file.name
-            }
-        }));
-
-        await Cache.set(cachedKey, result);
-
-        return res.json(result);
+        return res.json(
+            subscriptions.map(subscription => ({
+                id: subscription.meetup.id,
+                title: subscription.meetup.title,
+                description: subscription.meetup.description,
+                location: subscription.meetup.location,
+                date: subscription.meetup.date,
+                past: subscription.meetup.past,
+                user: {
+                    id: subscription.meetup.user.id,
+                    name: subscription.meetup.user.name
+                },
+                file: {
+                    id: subscription.meetup.file.id,
+                    url: subscription.meetup.file.url,
+                    name: subscription.meetup.file.name
+                }
+            }))
+        );
     }
 
     async store(req, res) {
