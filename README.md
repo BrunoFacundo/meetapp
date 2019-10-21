@@ -44,7 +44,7 @@ Segui a explicação de cada variável
 | REDIS_HOST | Endereço do servidor redis.                                                                                                                                                    |
 | REDIS_PORT | Porta do servidor redis.                                                                                                                                                       |
 | MAIL_HOST  | Endereço do servidor de email.                                                                                                                                                 |
-| MAIL_PORT  | Posta do servidor de email.                                                                                                                                                    |
+| MAIL_PORT  | Porta do servidor de email.                                                                                                                                                    |
 | MAIL_USER  | Usuário do servidor de email.                                                                                                                                                  |
 | MAIL_PASS  | Senha do servidor de email.                                                                                                                                                    |
 | SENTRY_DSN | Endereço do servidor sentry, usado apenas em produção.                                                                                                                         |
