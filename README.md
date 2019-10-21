@@ -4,15 +4,15 @@ Projeto desenvolvido para a certificação do Bootcamp GoStack 8.0.
 
 Segui abaixo os passos para configurar o ambiente de desenvolvimento.
 
-# Backend
+## Backend
 
-## Pré-requisito
+### Pré-requisito
 
 -   NodeJS
 -   Docker
 -   Yarn
 
-## Configurando containers docker
+### Configurando containers docker
 
 Estaremos utilizando dois container, uma para o banco de dados postgres e outro para o redis. Para criá-los basta executar os seguintes comandos no seu terminal:
 
@@ -25,7 +25,7 @@ Substitua o `<PASSWORD>` por uma senha de sua preferência.
 
 Crie um banco de dados dentro do container postgres.
 
-## Configurando variáveis de ambiente
+### Configurando variáveis de ambiente
 
 Copie o arquivo `.env.example` de dentro da pasta _backend_ para a mesma pasta renomeá-no para `.env`.
 
@@ -49,7 +49,7 @@ Segui a explicação de cada variável
 | MAIL_PASS  | Senha do servidor de email.                                                                                                                                                    |
 | SENTRY_DSN | Endereço do servidor sentry, usado apenas em produção.                                                                                                                         |
 
-## Instalando depedências
+### Instalando depedências
 
 Dentro da pasta _backend_ execute os seguintes comandos e aguarde a instalação terminar:
 
@@ -57,7 +57,7 @@ Dentro da pasta _backend_ execute os seguintes comandos e aguarde a instalação
 yarn
 ```
 
-## Configurando migrate e seed
+### Configurando migrate e seed
 
 Dentro da pasta _backend_ execute os seguintes:
 
@@ -66,7 +66,7 @@ yarn migrate
 yarn seed
 ```
 
-## Iniciando o servidor
+### Iniciando o servidor
 
 Dentro da pasta _backend_ execute os seguintes:
 
@@ -82,10 +82,10 @@ yarn dev
 yarn queue
 ```
 
-# Frontend
+## Frontend
 
 _TODO_
 
-# Mobile
+## Mobile
 
 _TODO_
