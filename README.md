@@ -1,4 +1,4 @@
-# MeetApp
+# Meetapp
 
 Projeto desenvolvido para a certificação do Bootcamp GoStack 8.0.
 
@@ -51,7 +51,7 @@ Segui a explicação de cada variável
 
 ### Instalando depedências
 
-Dentro da pasta _backend_ execute os seguintes comandos e aguarde a instalação terminar:
+Dentro da pasta _backend_ execute o seguinte comando e aguarde a instalação terminar:
 
 ```bash
 yarn
@@ -59,7 +59,7 @@ yarn
 
 ### Configurando migrate e seed
 
-Dentro da pasta _backend_ execute os seguintes:
+Dentro da pasta _backend_ execute os seguintes comandos:
 
 ```bash
 yarn migrate
@@ -68,7 +68,7 @@ yarn seed
 
 ### Iniciando o servidor
 
-Dentro da pasta _backend_ execute os seguintes:
+Dentro da pasta _backend_ execute os seguintes comandos:
 
 -   Iniciar api:
 
@@ -84,8 +84,57 @@ yarn queue
 
 ## Frontend
 
-_TODO_
+### Pré-requisito
+
+-   NodeJS
+-   Yarn
+
+### Instalando depedências
+
+Dentro da pasta _frontend_ execute o seguinte comando e aguarde a instalação terminar:
+
+```bash
+yarn
+```
+
+### Iniciando o servidor
+
+Dentro da pasta _frontend_ execute o seguinte:
+
+```bash
+yarn start
+```
 
 ## Mobile
 
-_TODO_
+**_Essa parte foi desenvolvida usado apenas o android._**
+
+### Pré-requisito
+
+-   NodeJS
+-   Android SDK
+-   Yarn
+
+### Instalando depedências
+
+Dentro da pasta _mobile_ execute o seguinte comando e aguarde a instalação terminar:
+
+```bash
+yarn
+```
+
+### Iniciando app
+
+Dentro da pasta _mobile_ execute o seguinte:
+
+-   Quando o app ainda não estiver instalado ou quando tiver alguma atualização de código nativo:
+
+```bash
+yarn android
+```
+
+-   Com o app já instalado:
+
+```bash
+yarn start
+```
