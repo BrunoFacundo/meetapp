@@ -21,7 +21,7 @@ docker run --name database-postgres -e POSTGRES_PASSWORD=<PASSWORD> -p 5432:5432
 docker run --name database-redis -p 6379:6379 -t -d redis:alpine
 ```
 
-Subistitua o `<PASSWORD>` por uma senha de sua preferência.
+Substitua o `<PASSWORD>` por uma senha de sua preferência.
 
 Crie um banco de dados dentro do container postgres.
 
