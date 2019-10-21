@@ -6,7 +6,7 @@ Segui abaixo os passos para configurar o ambiente de desenvolvimento.
 
 # Backend
 
-## Pre-requisito
+## Pré-requisito
 
 -   NodeJS
 -   Docker
@@ -17,9 +17,11 @@ Segui abaixo os passos para configurar o ambiente de desenvolvimento.
 Estaremos utilizando dois container, uma para o banco de dados postgres e outro para o redis. Para criá-los basta executar os seguintes comandos no seu terminal:
 
 ```bash
-docker run --name database-postgres -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres
-docker run --name redis -p 6379:6379 -t -d redis:alpine
+docker run --name database-postgres -e POSTGRES_PASSWORD=<PASSWORD> -p 5432:5432 -d postgres
+docker run --name database-redis -p 6379:6379 -t -d redis:alpine
 ```
+
+Subistitua o `<PASSWORD>` por uma senha de sua preferência.
 
 Crie um banco de dados dentro do container postgres.
 
