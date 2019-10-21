@@ -99,7 +99,7 @@ yarn
 
 ### Iniciando o servidor
 
-Dentro da pasta _frontend_ execute o seguinte:
+Dentro da pasta _frontend_ execute o seguinte comando:
 
 ```bash
 yarn start
@@ -125,7 +125,7 @@ yarn
 
 ### Iniciando app
 
-Dentro da pasta _mobile_ execute o seguinte:
+Dentro da pasta _mobile_ execute o seguinte comando:
 
 -   Quando o app ainda não estiver instalado ou quando tiver alguma atualização de código nativo:
 
