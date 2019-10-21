@@ -107,7 +107,7 @@ yarn start
 
 ## Mobile
 
-**_Essa parte foi desenvolvida usado apenas o android._**
+**_Essa parte foi desenvolvida usando apenas o android._**
 
 ### Pré-requisito
 
