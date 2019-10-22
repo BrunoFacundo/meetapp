@@ -4,7 +4,7 @@ Projeto desenvolvido para a certificação do [Bootcamp GoStack 8.0](https://roc
 
 Segui abaixo os passos para configurar o ambiente de desenvolvimento.
 
-## Pré-requisito
+## Pré-requisitos
 
 -   [NodeJS](https://nodejs.org)
 -   [Docker](https://www.docker.com/docker-community)
