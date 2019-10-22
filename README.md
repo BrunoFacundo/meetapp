@@ -1,35 +1,35 @@
 # Meetapp
 
-Projeto desenvolvido para a certificação do Bootcamp GoStack 8.0.
+Projeto desenvolvido para a certificação do [Bootcamp GoStack 8.0](https://rocketseat.com.br/bootcamp).
 
 Segui abaixo os passos para configurar o ambiente de desenvolvimento.
 
+## Pré-requisito
+
+-   [NodeJS](https://nodejs.org)
+-   [Docker](https://www.docker.com/docker-community)
+-   [Yarn](https://yarnpkg.com)
+
 ## Backend
-
-### Pré-requisito
-
--   NodeJS
--   Docker
--   Yarn
 
 ### Configurando containers docker
 
-Estaremos utilizando dois container, uma para o banco de dados postgres e outro para o redis. Para criá-los basta executar os seguintes comandos no seu terminal:
-
 ```bash
-docker run --name database-postgres -e POSTGRES_PASSWORD=<PASSWORD> -p 5432:5432 -d postgres
+# Criando container postgres do docker.
+docker run --name database-postgres -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres
+
+# Criando container redis do docker.
 docker run --name database-redis -p 6379:6379 -t -d redis:alpine
+
 ```
 
-Substitua o `<PASSWORD>` por uma senha de sua preferência.
-
-Crie um banco de dados dentro do container postgres.
+Após executar os comandos acima, crie um banco de dados dentro do container **postgres**.
 
 ### Configurando variáveis de ambiente
 
-Copie o arquivo `.env.example` de dentro da pasta _backend_ para a mesma pasta renomeá-no para `.env`.
+Copie o arquivo `.env.example` de dentro da pasta `backend` para a mesma pasta renomeá-no para `.env`.
 
-Segui a explicação de cada variável
+Segui a explicação de cada variável.
 
 | Variável   | Desrição                                                                                                                                                                       |
 | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -41,67 +41,46 @@ Segui a explicação de cada variável
 | DB_USER    | Usuário do banco de dados postgres.                                                                                                                                            |
 | DB_PASS    | Senha do banco de dados postgres.                                                                                                                                              |
 | DB_NAME    | Node do banco de dados postgres.                                                                                                                                               |
-| REDIS_HOST | Endereço do servidor redis.                                                                                                                                                    |
-| REDIS_PORT | Porta do servidor redis.                                                                                                                                                       |
+| REDIS_HOST | Endereço do do banco de dados redis.                                                                                                                                           |
+| REDIS_PORT | Porta do do banco de dados redis.                                                                                                                                              |
 | MAIL_HOST  | Endereço do servidor de email.                                                                                                                                                 |
 | MAIL_PORT  | Porta do servidor de email.                                                                                                                                                    |
 | MAIL_USER  | Usuário do servidor de email.                                                                                                                                                  |
 | MAIL_PASS  | Senha do servidor de email.                                                                                                                                                    |
 | SENTRY_DSN | Endereço do servidor sentry, usado apenas em produção.                                                                                                                         |
 
-### Instalando depedências
-
-Dentro da pasta _backend_ execute o seguinte comando e aguarde a instalação terminar:
+### Configurando api
 
 ```bash
-yarn
-```
+# Entrando da pasta do backend
+cd backend
 
-### Configurando migrate e seed
+# Instalando depedências
+yarn install
 
-Dentro da pasta _backend_ execute os seguintes comandos:
-
-```bash
+# Criando migrates
 yarn migrate
+
+# Criando seeds
 yarn seed
-```
 
-### Iniciando o servidor
-
-Dentro da pasta _backend_ execute os seguintes comandos:
-
--   Iniciar api:
-
-```bash
+# Iniciando api em mode de desenvolvimento
 yarn dev
-```
 
--   Iniciar fila de emails:
-
-```bash
+# Iniciando fila de emails
 yarn queue
 ```
 
 ## Frontend
 
-### Pré-requisito
-
--   NodeJS
--   Yarn
-
-### Instalando depedências
-
-Dentro da pasta _frontend_ execute o seguinte comando e aguarde a instalação terminar:
-
 ```bash
-yarn
-```
+# Entrando da pasta do frontend
+cd frontend
 
-### Iniciando o servidor
+# Instalando depedências
+yarn install
 
-Dentro da pasta _frontend_ execute o seguinte comando:
-
-```bash
+# Iniciando aplicação web
 yarn start
 ```
 
@@ -109,32 +88,15 @@ yarn start
 
 **_Essa parte foi desenvolvida usando apenas o android._**
 
-### Pré-requisito
-
--   NodeJS
--   Android SDK
--   Yarn
-
-### Instalando depedências
-
-Dentro da pasta _mobile_ execute o seguinte comando e aguarde a instalação terminar:
-
 ```bash
-yarn
-```
+# Entrando da pasta do mobile
+cd mobile
 
-### Iniciando app
+# Instalando depedências
+yarn install
 
-Dentro da pasta _mobile_ execute o seguinte comando:
-
--   Quando o app ainda não estiver instalado ou quando tiver alguma atualização de código nativo:
-
-```bash
+# Iniciando aplicação mobile
 yarn android
 ```
 
--   Com o app já instalado:
-
-```bash
-yarn start
-```
+Após a aplicação já estiver sido instalada, você pode executar `yarn start` para iniciá-la em futuras execuções, mas quando tiver alguma alteração de código nativo será necessário rodar `yarn android` novamente.
