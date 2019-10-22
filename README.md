@@ -59,7 +59,7 @@ cd backend
 # Instalando depedências
 yarn install
 
-# Criando migrates
+# Criando migrations
 yarn migrate
 
 # Criando seeds
