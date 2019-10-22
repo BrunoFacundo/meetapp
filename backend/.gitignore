@@ -1,7 +1,8 @@
 /node_modules
 /dist
-/tmp
+#/tmp
 
 .env
 
+!/tmp/uploads/seeds
 !.gitkeep
