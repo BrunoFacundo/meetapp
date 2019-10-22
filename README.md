@@ -65,7 +65,7 @@ yarn migrate
 # Criando seeds
 yarn seed
 
-# Iniciando api em mode de desenvolvimento
+# Iniciando api em modo de desenvolvimento
 yarn dev
 
 # Iniciando fila de emails
