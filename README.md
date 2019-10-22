@@ -7,8 +7,9 @@ Segui abaixo os passos para configurar o ambiente de desenvolvimento.
 ## Pré-requisitos
 
 -   [NodeJS](https://nodejs.org)
--   [Docker](https://www.docker.com/docker-community)
 -   [Yarn](https://yarnpkg.com)
+-   [Docker](https://www.docker.com/docker-community)
+-   [Android SDK](https://developer.android.com/studio)
 
 ## Backend
 
