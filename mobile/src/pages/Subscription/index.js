@@ -1,6 +1,5 @@
 import { format, parseISO } from 'date-fns';
 import pt from 'date-fns/locale/pt';
-import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -128,10 +127,6 @@ function Subscription({ isFocused }) {
 Subscription.navigationOptions = {
     tabBarLabel: 'Inscrições',
     tabBarIcon: ({ tintColor }) => <TabBarIcon name="local-offer" color={tintColor} />
-};
-
-Subscription.propTypes = {
-    isFocused: PropTypes.bool.isRequired
 };
 
 export default withNavigationFocus(Subscription);

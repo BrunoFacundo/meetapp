@@ -1,6 +1,5 @@
 import { addDays, format, parseISO, subDays } from 'date-fns';
 import pt from 'date-fns/locale/pt';
-import PropTypes from 'prop-types';
 import React, { useEffect, useMemo, useState } from 'react';
 import { ActivityIndicator, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -182,10 +181,6 @@ function Dashboard({ isFocused }) {
 Dashboard.navigationOptions = {
     tabBarLabel: 'Meetups',
     tabBarIcon: ({ tintColor }) => <TabBarIcon name="format-list-bulleted" color={tintColor} />
-};
-
-Dashboard.propTypes = {
-    isFocused: PropTypes.bool.isRequired
 };
 
 export default withNavigationFocus(Dashboard);

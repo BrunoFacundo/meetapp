@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React, { useRef, useState } from 'react';
 import { Alert, Image, Keyboard } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
@@ -85,9 +84,3 @@ export default function SignIn({ navigation }) {
         </Background>
     );
 }
-
-SignIn.propTypes = {
-    navigation: PropTypes.shape({
-        navigate: PropTypes.func.isRequired
-    }).isRequired
-};
