@@ -8,8 +8,6 @@ import CreateSubscriptionService from '../services/CreateSubscriptionService';
 
 class SubscriptionController {
     async index(req, res) {
-        const { timezone } = req.headers;
-
         const subscriptions = await Subscription.findAll({
             where: {
                 user_id: req.userId
