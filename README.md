@@ -1,10 +1,28 @@
-# Meetapp
+<p align="center">
+    <img src="./assets/logo.svg" alt="Meetapp" width="80px">
+    <h3 align="center">Meetapp</h3>
+</p>
+<p align="center">
+    Projeto desenvolvido para a certificação do <a href="https://rocketseat.com.br/bootcamp" target="_blank">Bootcamp GoStack 8.0</a>.
+</p>
+ 
+ ---
 
-Projeto desenvolvido para a certificação do [Bootcamp GoStack 8.0](https://rocketseat.com.br/bootcamp).
+### Mobile
 
-Segue abaixo os passos para configurar o ambiente de desenvolvimento.
+![Mobile](./assets/mobile_screenshots.svg)
 
-## Pré-requisitos
+### Web
+
+![Mobile](./assets/web_screenshots.svg)
+
+Para acessar a demo web <a href="https://www.meetapp-bootcamp.tk" target="_blank">clique aqui</a>.
+
+---
+
+## Configuração do ambiente de desenvolvimento
+
+### Pré-requisitos
 
 -   [NodeJS](https://nodejs.org)
 -   [Yarn](https://yarnpkg.com)
@@ -32,18 +50,18 @@ Copie o arquivo `.env.example` de dentro da pasta `backend` para a mesma pasta e
 
 Segue a descrição de cada variável.
 
-| Variável   | Descrição                                                                                                                                                                       |
+| Variável   | Descrição                                                                                                                                                                      |
 | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| APP_URL    | Endereço do backend, deve-se colocar o IP da sua máquina em vez do _localhost_ para evitar problemas quando for testar a parte mobile com android, exemplo `http://<IP>:3333`. |
+| APP_URL    | Endereço do backend. Deve-se colocar o IP da sua máquina em vez do _localhost_ para evitar problemas quando for testar a parte mobile com android, exemplo `http://<IP>:3333`. |
 | FRONT_URL  | Endereço do frontend usado na configuração de origin, exemplo `http://localhost:3000`.                                                                                         |
 | NODE_ENV   | Define o modo da aplicação, exemplo `development` ou `production`.                                                                                                             |
 | APP_SECRET | Chave usada para criar o token JWT.                                                                                                                                            |
-| DB_HOST    | Endereço do servidor do banco de dados postgres.                                                                                                                                |
+| DB_HOST    | Endereço do servidor do banco de dados postgres.                                                                                                                               |
 | DB_USER    | Usuário do banco de dados postgres.                                                                                                                                            |
 | DB_PASS    | Senha do banco de dados postgres.                                                                                                                                              |
 | DB_NAME    | Node do banco de dados postgres.                                                                                                                                               |
-| REDIS_HOST | Endereço do banco de dados redis.                                                                                                                                           |
-| REDIS_PORT | Porta do banco de dados redis.                                                                                                                                              |
+| REDIS_HOST | Endereço do banco de dados redis.                                                                                                                                              |
+| REDIS_PORT | Porta do banco de dados redis.                                                                                                                                                 |
 | MAIL_HOST  | Endereço do servidor de email.                                                                                                                                                 |
 | MAIL_PORT  | Porta do servidor de email.                                                                                                                                                    |
 | MAIL_USER  | Usuário do servidor de email.                                                                                                                                                  |
