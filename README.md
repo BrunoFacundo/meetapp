@@ -3,7 +3,7 @@
     <h3 align="center">Meetapp</h3>
 </p>
 <p align="center">
-    Projeto desenvolvido para a certificação do <a href="https://rocketseat.com.br/bootcamp" target="_blank">Bootcamp GoStack 8.0</a> :rocket:.
+    Projeto desenvolvido para a certificação do <a href="https://rocketseat.com.br/bootcamp" target="_blank">Bootcamp GoStack 8.0</a>. :rocket:
 </p>
  
  ---
