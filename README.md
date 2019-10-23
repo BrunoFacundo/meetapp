@@ -1,16 +1,16 @@
 <p align="center">
     <img src="./assets/logo.svg" alt="Meetapp" width="80px">
-    <br />
-    <span style="font-size:28px;">Meetapp</span>
-    <br />
+    <h3 align="center">Meetapp</h3>
+</p>
+<p align="center">
     Projeto desenvolvido para a certificação do <a href="https://rocketseat.com.br/bootcamp" target="_blank">Bootcamp GoStack 8.0</a>.
 </p>
  
  ---
 
-![Mobile](./assets/screenshots/mobile.png)
+![Mobile](./assets/mobile_screenshots.svg)
 
-Para acessar a demo do frontend <a href="https://www.meetapp-bootcamp.tk" target="_blank">clique aqui</a>.
+Para acessar a demo web <a href="https://www.meetapp-bootcamp.tk" target="_blank">clique aqui</a>.
 
 ---
 
