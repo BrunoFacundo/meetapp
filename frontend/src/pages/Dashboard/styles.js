@@ -109,7 +109,7 @@ export const MeetupItem = styled.li`
         align-items: center;
 
         svg {
-            margin-left: 40px;
+            margin-left: 30px;
         }
     }
 
