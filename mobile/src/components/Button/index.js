@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { ActivityIndicator } from 'react-native';
 import { Container, Text } from './styles';
@@ -9,3 +10,12 @@ export default function Button({ children, loading, ...rest }) {
         </Container>
     );
 }
+
+Button.propTypes = {
+    children: PropTypes.element.isRequired,
+    loading: PropTypes.bool
+};
+
+Button.defaultProps = {
+    loading: false
+};

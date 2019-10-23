@@ -1,4 +1,5 @@
 import Boom from '@hapi/boom';
+import { zonedTimeToUtc } from 'date-fns-tz';
 import { Op } from 'sequelize';
 import File from '../models/File';
 import Meetup from '../models/Meetup';
@@ -8,6 +9,8 @@ import CreateSubscriptionService from '../services/CreateSubscriptionService';
 
 class SubscriptionController {
     async index(req, res) {
+        const { timezone } = req.headers;
+
         const subscriptions = await Subscription.findAll({
             where: {
                 user_id: req.userId
@@ -18,7 +21,7 @@ class SubscriptionController {
                     as: 'meetup',
                     where: {
                         date: {
-                            [Op.gt]: new Date()
+                            [Op.gt]: zonedTimeToUtc(new Date(), timezone)
                         }
                     },
                     include: [

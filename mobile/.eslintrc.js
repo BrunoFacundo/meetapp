@@ -27,7 +27,7 @@ module.exports = {
         'no-param-reassign': 'off',
         'no-underscore-dangle': 'off',
         'no-shadow': 'off',
-        'react/prop-types': 'off',
+        'react/prop-types': ['error', { ignore: ['navigation', 'tintColor', 'isFocused'] }],
         'react-hooks/rules-of-hooks': 'error',
         'react-hooks/exhaustive-deps': 'warn',
         'react/jsx-props-no-spreading': 'off'

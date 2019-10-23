@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { MdArrowBack } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
@@ -47,3 +48,7 @@ export default function Header({ back }) {
         </Container>
     );
 }
+
+Header.propTypes = {
+    back: PropTypes.bool.isRequired
+};

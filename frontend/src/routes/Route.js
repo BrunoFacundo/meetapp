@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import AuthLayout from '~/pages/_layouts/auth';
@@ -28,3 +29,14 @@ export default function RouteWrapper({ component: Component, isPrivate = false, 
         />
     );
 }
+
+RouteWrapper.propTypes = {
+    component: PropTypes.func.isRequired,
+    isPrivate: PropTypes.bool,
+    back: PropTypes.bool
+};
+
+RouteWrapper.defaultProps = {
+    isPrivate: false,
+    back: false
+};
