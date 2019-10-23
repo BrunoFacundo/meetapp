@@ -1,5 +1,4 @@
 import Boom from '@hapi/boom';
-import { zonedTimeToUtc } from 'date-fns-tz';
 import { Op } from 'sequelize';
 import File from '../models/File';
 import Meetup from '../models/Meetup';
@@ -21,7 +20,7 @@ class SubscriptionController {
                     as: 'meetup',
                     where: {
                         date: {
-                            [Op.gt]: zonedTimeToUtc(new Date(), timezone)
+                            [Op.gt]: new Date()
                         }
                     },
                     include: [
