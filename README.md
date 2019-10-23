@@ -8,10 +8,15 @@
  
  ---
 
-<details>
-<summary style="font-size:18px;">Configuração do ambiente de desenvolvimento</summary>
+![Mobile](./assets/screenshots/mobile.png)
 
-## Pré-requisitos
+Para acessar a demo do frontend <a href="https://www.meetapp-bootcamp.tk" target="_blank">clique aqui</a>.
+
+---
+
+## Configuração do ambiente de desenvolvimento
+
+### Pré-requisitos
 
 -   [NodeJS](https://nodejs.org)
 -   [Yarn](https://yarnpkg.com)
@@ -20,7 +25,7 @@
 
 ## Backend
 
-## Configurando containers docker
+### Configurando containers docker
 
 ```bash
 # Criando container postgres do docker.
@@ -33,7 +38,7 @@ docker run --name database-redis -p 6379:6379 -t -d redis:alpine
 
 Após executar os comandos acima, crie um banco de dados dentro do container **postgres**.
 
-## Configurando variáveis de ambiente
+### Configurando variáveis de ambiente
 
 Copie o arquivo `.env.example` de dentro da pasta `backend` para a mesma pasta e renomei-o para `.env`.
 
@@ -57,7 +62,7 @@ Segue a descrição de cada variável.
 | MAIL_PASS  | Senha do servidor de email.                                                                                                                                                    |
 | SENTRY_DSN | Endereço do servidor sentry, usado apenas em produção.                                                                                                                         |
 
-## Configurando API
+### Configurando API
 
 ```bash
 # Entrando na pasta do backend
@@ -108,25 +113,3 @@ yarn android
 ```
 
 Após a aplicação ter sido instalada, você pode executar `yarn start` para iniciá-la em futuras execuções, mas quando tiver alguma alteração de código nativo será necessário rodar `yarn android` novamente.
-
-</details>
-
-<details>
-<summary style="font-size:18px;">Screenshots</summary>
-
-### Mobile
-
-![Mobile](./assets/screenshots/mobile.png)
-
-### Web
-
-_TODO_
-
-</details>
-
-<details>
-<summary style="font-size:18px;">Demo</summary>
-
-Para acessar a demo do frontend [clique aqui](https://www.meetapp-bootcamp.tk 'Meetapp').
-
-</details>
