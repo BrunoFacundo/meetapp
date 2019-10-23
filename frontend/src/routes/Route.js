@@ -31,7 +31,7 @@ export default function RouteWrapper({ component: Component, isPrivate = false, 
 }
 
 RouteWrapper.propTypes = {
-    component: PropTypes.element.isRequired,
+    component: PropTypes.func.isRequired,
     isPrivate: PropTypes.bool,
     back: PropTypes.bool
 };
