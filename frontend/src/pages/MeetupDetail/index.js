@@ -2,9 +2,9 @@ import React from 'react';
 import { MdDeleteForever, MdEvent, MdModeEdit, MdRoom } from 'react-icons/md';
 import { Redirect } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { FiAlertTriangle } from 'react-icons/fi';
 import api from '~/services/api';
 import { Button, Container, Content, Detail, Header } from './styles';
-import { FiAlertTriangle } from 'react-icons/fi';
 
 export default function MeetupDetail({ history, location }) {
     if (!location.state) {
