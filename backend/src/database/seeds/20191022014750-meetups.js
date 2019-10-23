@@ -1,8 +1,8 @@
-const { addHours, subDays, addDays, setMinutes, setSeconds } = require('date-fns');
+const { addHours, subDays, addDays, setMinutes, setSeconds, setMilliseconds } = require('date-fns');
 
 module.exports = {
     up: async queryInterface => {
-        const date = setMinutes(setSeconds(new Date(), 0), 0);
+        const date = setMinutes(setSeconds(setMilliseconds(new Date(), 0), 0), 0);
 
         const meetups = [
             {

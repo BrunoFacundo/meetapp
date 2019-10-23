@@ -111,9 +111,11 @@ function Subscription({ isFocused }) {
                                 <Icon name="person" color="#999" size={16} />
                                 <MeetupInfoText>Organizador: {meetup.user.name}</MeetupInfoText>
                             </MeetupInfo>
-                            <SubscriptionButton onPress={() => handleCancelSubscription(meetup)}>
-                                <SubscriptionButtonText>Cancelar incrição</SubscriptionButtonText>
-                            </SubscriptionButton>
+                            {!meetup.past && (
+                                <SubscriptionButton onPress={() => handleCancelSubscription(meetup)}>
+                                    <SubscriptionButtonText>Cancelar incrição</SubscriptionButtonText>
+                                </SubscriptionButton>
+                            )}
                         </MeetupItem>
                     )}
                 />
