@@ -12,7 +12,7 @@ export default function Button({ children, loading, ...rest }) {
 }
 
 Button.propTypes = {
-    children: PropTypes.element.isRequired,
+    children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]).isRequired,
     loading: PropTypes.bool
 };
 
