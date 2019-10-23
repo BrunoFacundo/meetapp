@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
@@ -14,3 +15,8 @@ export default function TabBarIcon({ name, color }) {
         />
     );
 }
+
+TabBarIcon.propTypes = {
+    name: PropTypes.string.isRequired,
+    color: PropTypes.string.isRequired
+};
