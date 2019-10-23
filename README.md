@@ -8,7 +8,13 @@
  
  ---
 
+### Mobile
+
 ![Mobile](./assets/mobile_screenshots.svg)
+
+### Web
+
+![Mobile](./assets/web_screenshots.svg)
 
 Para acessar a demo web <a href="https://www.meetapp-bootcamp.tk" target="_blank">clique aqui</a>.
 
