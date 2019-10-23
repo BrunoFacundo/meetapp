@@ -19,6 +19,7 @@ import {
     MeetupItem,
     MeetupList,
     MeetupTitle,
+    StatusText,
     SubscriptionButton,
     SubscriptionButtonText,
     Title
@@ -165,9 +166,13 @@ function Dashboard({ isFocused }) {
                                 <Icon name="person" color="#999" size={16} />
                                 <MeetupInfoText>Organizador: {meetup.user.name}</MeetupInfoText>
                             </MeetupInfo>
+                            {meetup.past && <StatusText>Essa meetup já foi realizada</StatusText>}
+                            {!meetup.past && meetup.subscriber && (
+                                <StatusText>Você está inscrito nessa meetup</StatusText>
+                            )}
                             {!meetup.past && !meetup.subscriber && (
                                 <SubscriptionButton onPress={() => handleSubscription(meetup)}>
-                                    <SubscriptionButtonText>Realizar incrição</SubscriptionButtonText>
+                                    <SubscriptionButtonText>Realizar inscrição</SubscriptionButtonText>
                                 </SubscriptionButton>
                             )}
                         </MeetupItem>

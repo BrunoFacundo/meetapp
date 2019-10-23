@@ -74,6 +74,18 @@ export const MeetupInfoText = styled.Text`
     margin-left: 10px;
 `;
 
+export const StatusText = styled.Text`
+    margin-top: 10px;
+    font-size: 18px;
+    text-align: center;
+    line-height: 50px;
+    height: 50px;
+    color: #f94d6a;
+    background: #fff;
+    border: 1px solid #f94d6a;
+    border-radius: 4px;
+`;
+
 export const SubscriptionButton = styled(Button)`
     margin-top: 10px;
 `;

@@ -113,7 +113,7 @@ function Subscription({ isFocused }) {
                             </MeetupInfo>
                             {!meetup.past && (
                                 <SubscriptionButton onPress={() => handleCancelSubscription(meetup)}>
-                                    <SubscriptionButtonText>Cancelar incrição</SubscriptionButtonText>
+                                    <SubscriptionButtonText>Cancelar inscrição</SubscriptionButtonText>
                                 </SubscriptionButton>
                             )}
                         </MeetupItem>
