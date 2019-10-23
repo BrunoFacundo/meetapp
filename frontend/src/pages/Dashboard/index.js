@@ -1,6 +1,7 @@
 import { format, parseISO } from 'date-fns';
 import pt from 'date-fns/locale/pt';
 import React, { useEffect, useState } from 'react';
+import { FiAlertTriangle } from 'react-icons/fi';
 import { MdAddCircleOutline, MdKeyboardArrowRight } from 'react-icons/md';
 import api from '~/services/api';
 import { Container, Content, EmptyList, Header, LoadingList, MeetupItem, MeetupList } from './styles';
@@ -53,8 +54,13 @@ export default function Dashboard({ history }) {
                         {meetups.map(meetup => (
                             <MeetupItem key={meetup.id} onClick={() => handleMeetupDetail(meetup)}>
                                 <strong>
-                                    {meetup.past && <span>[JÁ REALIZADA]</span>}
                                     {meetup.title}
+                                    {meetup.past && (
+                                        <span>
+                                            <FiAlertTriangle />
+                                            Essa meetup já foi realizada
+                                        </span>
+                                    )}
                                 </strong>
                                 <div>
                                     <span>{meetup.dateFormatted}</span>

@@ -21,6 +21,19 @@ export const Header = styled.header`
     strong {
         color: #fff;
         font-size: 20px;
+
+        span {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            margin-top: 8px;
+            font-weight: normal;
+            color: rgba(255, 255, 255, 0.8);
+
+            svg {
+                margin-right: 5px;
+            }
+        }
     }
 
     div {

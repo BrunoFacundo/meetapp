@@ -74,7 +74,8 @@ export const MeetupItem = styled.li`
     align-items: center;
     justify-content: space-between;
     background: rgba(0, 0, 0, 0.2);
-    padding: 20px 30px;
+    padding: 10px 30px;
+    min-height: 80px;
     border-radius: 4px;
     transition: background 0.2s;
     color: #fff;
@@ -85,8 +86,21 @@ export const MeetupItem = styled.li`
     }
 
     strong {
+        display: flex;
+        flex-direction: column;
+        font-size: 14px;
+
         span {
-            margin-right: 8px;
+            display: flex;
+            align-items: center;
+            font-size: 12px;
+            margin-top: 8px;
+            font-weight: normal;
+            color: rgba(255, 255, 255, 0.8);
+
+            svg {
+                margin-right: 5px;
+            }
         }
     }
 
@@ -95,7 +109,7 @@ export const MeetupItem = styled.li`
         align-items: center;
 
         svg {
-            margin-left: 40px;
+            margin-left: 30px;
         }
     }
 

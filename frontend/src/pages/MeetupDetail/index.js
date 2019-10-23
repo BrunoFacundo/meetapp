@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import api from '~/services/api';
 import { Button, Container, Content, Detail, Header } from './styles';
+import { FiAlertTriangle } from 'react-icons/fi';
 
 export default function MeetupDetail({ history, location }) {
     if (!location.state) {
@@ -31,8 +32,13 @@ export default function MeetupDetail({ history, location }) {
             <Content>
                 <Header>
                     <strong>
-                        {meetup.past && '[JÁ REALIZADA] '}
                         {meetup.title}
+                        {meetup.past && (
+                            <span>
+                                <FiAlertTriangle />
+                                Essa meetup já foi realizada
+                            </span>
+                        )}
                     </strong>
                     <div>
                         <Button type="button" color="#4DBAF9" disabled={meetup.past} onClick={() => handleEdit(meetup)}>
