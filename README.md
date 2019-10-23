@@ -52,7 +52,7 @@ Segue a descrição de cada variável.
 
 | Variável   | Descrição                                                                                                                                                                      |
 | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| APP_URL    | Endereço do backend, deve-se colocar o IP da sua máquina em vez do _localhost_ para evitar problemas quando for testar a parte mobile com android, exemplo `http://<IP>:3333`. |
+| APP_URL    | Endereço do backend. Deve-se colocar o IP da sua máquina em vez do _localhost_ para evitar problemas quando for testar a parte mobile com android, exemplo `http://<IP>:3333`. |
 | FRONT_URL  | Endereço do frontend usado na configuração de origin, exemplo `http://localhost:3000`.                                                                                         |
 | NODE_ENV   | Define o modo da aplicação, exemplo `development` ou `production`.                                                                                                             |
 | APP_SECRET | Chave usada para criar o token JWT.                                                                                                                                            |
