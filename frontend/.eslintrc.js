@@ -31,7 +31,7 @@ module.exports = {
         'jsx-a11y/no-noninteractive-element-interactions': 'off',
         'jsx-a11y/no-static-element-interactions': 'off',
         'jsx-a11y/click-events-have-key-events': 'off',
-        'react/prop-types': 'off',
+        'react/prop-types': ['error', { ignore: ['history', 'location'] }],
         'react-hooks/rules-of-hooks': 'error',
         'react-hooks/exhaustive-deps': 'warn',
         'react/jsx-props-no-spreading': 'off'
