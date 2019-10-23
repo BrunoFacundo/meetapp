@@ -3,7 +3,7 @@
     <h3 align="center">Meetapp</h3>
 </p>
 <p align="center">
-    Projeto desenvolvido para a certificação do <a href="https://rocketseat.com.br/bootcamp" target="_blank">Bootcamp GoStack 8.0</a>.
+    Projeto desenvolvido para a certificação do <a href="https://rocketseat.com.br/bootcamp" target="_blank">Bootcamp GoStack 8.0</a>. :rocket:
 </p>
  
  ---
@@ -105,7 +105,7 @@ yarn start
 
 ## Mobile
 
-**_Essa parte foi desenvolvida usando apenas o android._**
+:warning: **_Desenvolvido apenas para android._** :warning:
 
 ```bash
 # Entrando na pasta do mobile
