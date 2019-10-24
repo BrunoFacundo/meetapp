@@ -59,7 +59,7 @@ function Subscription({ isFocused }) {
 
             setMeetups(meetups.filter(item => item.id !== meetup.id));
 
-            Alert.alert('', 'Incrição cancelada com sucesso.');
+            Alert.alert('', 'Inscrição cancelada com sucesso.');
         } catch (err) {
             Alert.alert(
                 '',

@@ -1,20 +1,18 @@
-<p align="center">
-    <img src="./assets/logo.svg" alt="Meetapp" width="80px">
-    <h3 align="center">Meetapp</h3>
-</p>
-<p align="center">
-    Projeto desenvolvido para a certificação do <a href="https://rocketseat.com.br/bootcamp" target="_blank">Bootcamp GoStack 8.0</a>. :rocket:
-</p>
- 
- ---
+<h1 align="center">
+    <img alt="Meetapp" src=".github/logo.svg" width="150px" />
+</h1>
+
+<h3 align="center">
+    Projeto desenvolvido para a certificação do <a href="https://rocketseat.com.br/bootcamp">Bootcamp GoStack 8.0</a>. :rocket:
+</h3>
 
 ### Mobile
 
-[![Mobile](./assets/screenshots/mobile/all.svg)](./assets/screenshots/mobile 'Mobile screenshots')
+[![Mobile](.github/screenshots/mobile/all.svg)](.github/screenshots/mobile 'Mobile screenshots')
 
 ### Web
 
-[![Web](./assets/screenshots/web/all.svg)](./assets/screenshots/web 'Web screenshots')
+[![Web](.github/screenshots/web/all.svg)](.github/screenshots/web 'Web screenshots')
 
 Para acessar a demo web <a href="https://www.meetapp-bootcamp.tk" target="_blank">clique aqui</a>.
 
@@ -90,7 +88,7 @@ yarn dev
 yarn queue
 ```
 
-Na execução dos seeds foi criando usuários e meetups de exemplos. Você pode encontrar as credencias de acesso desses usuários no arquivo `backend\src\database\seeds\20190930224153-users.js`.
+Na execução dos seeds foi criado usuários e meetups de exemplos. Você pode encontrar as credenciais de acesso desses usuários no arquivo [`backend/src/database/seeds/20190930224153-users.js`](backend/src/database/seeds/20190930224153-users.js).
 
 ## Frontend
 
