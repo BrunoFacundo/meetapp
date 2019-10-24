@@ -89,7 +89,7 @@ function Dashboard({ isFocused }) {
                 })
             );
 
-            Alert.alert('', 'Incrição realizada com sucesso.');
+            Alert.alert('', 'Inscrição realizada com sucesso.');
         } catch (err) {
             Alert.alert('', err.isAxiosError ? err.response.data.error.message : 'Não foi possível fazer a inscrição.');
         }
