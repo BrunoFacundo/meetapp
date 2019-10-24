@@ -10,11 +10,11 @@
 
 ### Mobile
 
-![Mobile](./assets/mobile_screenshots.svg)
+[![Mobile](./assets/screenshots/mobile/all.svg)](./assets/screenshots/mobile 'Mobile screenshots')
 
 ### Web
 
-![Mobile](./assets/web_screenshots.svg)
+[![Web](./assets/screenshots/web/all.svg)](./assets/screenshots/web 'Web screenshots')
 
 Para acessar a demo web <a href="https://www.meetapp-bootcamp.tk" target="_blank">clique aqui</a>.
 
@@ -89,6 +89,8 @@ yarn dev
 # Iniciando fila de emails
 yarn queue
 ```
+
+Na execução dos seeds foi criando usuários e meetups de exemplos. Você pode encontrar as credencias de acesso desses usuários no arquivo `backend\src\database\seeds\20190930224153-users.js`.
 
 ## Frontend
 
