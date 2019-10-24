@@ -6,14 +6,14 @@ module.exports = {
             {
                 name: 'Rocketseat Experience',
                 email: 'rsxp@rocketseat.com.br',
-                password_hash: await bcrypt.hash('12345678', 8),
+                password_hash: await bcrypt.hash('123456', 8),
                 created_at: new Date(),
                 updated_at: new Date()
             },
             {
                 name: 'Bruno Facundo',
-                email: 'brunofr95@gmail.com',
-                password_hash: await bcrypt.hash('12345678', 8),
+                email: 'bruno@meetapp.com.br',
+                password_hash: await bcrypt.hash('123456', 8),
                 created_at: new Date(),
                 updated_at: new Date()
             }
