@@ -88,6 +88,12 @@ yarn dev
 yarn queue
 ```
 
+### Configurando Insomnia
+
+Você pode carregar o arquivo [`backend/insomnia.json`](backend/insomnia.json) no Insomnia para testar a API.
+
+### Dados de exemplo
+
 Na execução dos seeds foi criado usuários e meetups de exemplos. Você pode encontrar as credenciais de acesso desses usuários no arquivo [`backend/src/database/seeds/20190930224153-users.js`](backend/src/database/seeds/20190930224153-users.js).
 
 ## Frontend
