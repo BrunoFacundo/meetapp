@@ -1,6 +1,7 @@
 {
     "name": "meetapp-frontend",
     "version": "1.0.0",
+    "main": "src/index.js",
     "author": "Bruno Facundo <brunofr95@gmail.com>",
     "license": "MIT",
     "scripts": {

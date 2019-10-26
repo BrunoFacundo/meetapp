@@ -1,8 +1,8 @@
 {
     "_type": "export",
     "__export_format": 4,
-    "__export_date": "2019-10-05T17:03:53.850Z",
-    "__export_source": "insomnia.desktop.app:v7.0.0",
+    "__export_date": "2019-10-25T20:42:29.495Z",
+    "__export_source": "insomnia.desktop.app:v7.0.3",
     "resources": [
         {
             "_id": "req_068bc5e35f134f558f4f97f126d9e68f",
@@ -53,7 +53,7 @@
         {
             "_id": "req_cf9e24f6d3ef46789fb2cf3ac48465e7",
             "authentication": {
-                "token": "{{ token_user  }}",
+                "token": "{{ token  }}",
                 "type": "bearer"
             },
             "body": {},
@@ -63,7 +63,7 @@
             "isPrivate": false,
             "metaSortKey": -1560975857499,
             "method": "GET",
-            "modified": 1570294776975,
+            "modified": 1572035882678,
             "name": "List",
             "parameters": [],
             "parentId": "fld_82ab844aeb9249b5944d53151d35df1a",
@@ -90,7 +90,7 @@
         {
             "_id": "req_62c20b7e98ba4f85a9763cab636ee046",
             "authentication": {
-                "token": "{{ token_user  }}",
+                "token": "{{ token  }}",
                 "type": "bearer"
             },
             "body": {},
@@ -100,7 +100,7 @@
             "isPrivate": false,
             "metaSortKey": -1560975857449,
             "method": "POST",
-            "modified": 1570294780960,
+            "modified": 1572035888452,
             "name": "Create",
             "parameters": [],
             "parentId": "fld_82ab844aeb9249b5944d53151d35df1a",
@@ -115,7 +115,7 @@
         {
             "_id": "req_bb141010ab1f4154aaa68343fe391059",
             "authentication": {
-                "token": "{{ token_user  }}",
+                "token": "{{ token  }}",
                 "type": "bearer"
             },
             "body": {},
@@ -125,7 +125,7 @@
             "isPrivate": false,
             "metaSortKey": -1560975857399,
             "method": "DELETE",
-            "modified": 1570294785209,
+            "modified": 1572035893516,
             "name": "Delete",
             "parameters": [],
             "parentId": "fld_82ab844aeb9249b5944d53151d35df1a",
@@ -150,13 +150,13 @@
             "isPrivate": false,
             "metaSortKey": -1560972409630,
             "method": "GET",
-            "modified": 1570294986208,
+            "modified": 1572035920930,
             "name": "List",
             "parameters": [
                 {
                     "id": "pair_4f0a4b446243412cb79f14e636609314",
                     "name": "date",
-                    "value": "2019-10-05"
+                    "value": "2019-10-25"
                 },
                 {
                     "disabled": false,
@@ -194,7 +194,7 @@
             },
             "body": {
                 "mimeType": "application/json",
-                "text": "{\n\t\"title\": \"Meetup de React Native\",\n\t\"description\": \"O Meetup de React Native é um evento que reúne a comunidade de desenvolvimento mobile utilizando React a fim de compartilhar conhecimento. Todos são convidados.\",\n\t\"location\": \"Rua Guilherme Gembala, 260\",\n\t\"date\": \"2019-10-05 17:00:00\",\n\t\"file_id\": 1\n}"
+                "text": "{\n\t\"title\": \"Meetup de React Native\",\n\t\"description\": \"O Meetup de React Native é um evento que reúne a comunidade de desenvolvimento mobile utilizando React a fim de compartilhar conhecimento. Todos são convidados.\",\n\t\"location\": \"Rua Guilherme Gembala, 260\",\n\t\"date\": \"2019-10-25 17:00:00\",\n\t\"file_id\": 1\n}"
             },
             "created": 1560972409580,
             "description": "",
@@ -208,7 +208,7 @@
             "isPrivate": false,
             "metaSortKey": -1560972409580,
             "method": "POST",
-            "modified": 1570294969696,
+            "modified": 1572035941597,
             "name": "Create",
             "parameters": [],
             "parentId": "fld_2ec994bb4a8a4f1ab9c9e0b91730be27",
@@ -228,7 +228,7 @@
             },
             "body": {
                 "mimeType": "application/json",
-                "text": "{\n\t\"title\": \"Meetup de React Native [Nova data]\",\n\t\"description\": \"O Meetup de React Native é um evento que reúne a comunidade de desenvolvimento mobile utilizando React a fim de compartilhar conhecimento. Todos são convidados.\",\n\t\"location\": \"Rua Guilherme Gembala, 260\",\n\t\"date\": \"2019-10-02 10:00:00\",\n\t\"file_id\": 1\n}"
+                "text": "{\n\t\"title\": \"Meetup de React Native [Nova data]\",\n\t\"description\": \"O Meetup de React Native é um evento que reúne a comunidade de desenvolvimento mobile utilizando React a fim de compartilhar conhecimento. Todos são convidados.\",\n\t\"location\": \"Rua Guilherme Gembala, 260\",\n\t\"date\": \"2019-10-25 19:00:00\",\n\t\"file_id\": 1\n}"
             },
             "created": 1560974462848,
             "description": "",
@@ -242,7 +242,7 @@
             "isPrivate": false,
             "metaSortKey": -1560967006634,
             "method": "PUT",
-            "modified": 1569888631689,
+            "modified": 1572035950793,
             "name": "Update",
             "parameters": [],
             "parentId": "fld_2ec994bb4a8a4f1ab9c9e0b91730be27",
@@ -338,7 +338,7 @@
             "authentication": {},
             "body": {
                 "mimeType": "application/json",
-                "text": "{\n\t\"email\": \"rsxp@rocketseat.com.br\",\n\t\"password\": \"12345678\"\n}"
+                "text": "{\n\t\"email\": \"rsxp@rocketseat.com.br\",\n\t\"password\": \"123456\"\n}"
             },
             "created": 1560971802039,
             "description": "",
@@ -352,7 +352,7 @@
             "isPrivate": false,
             "metaSortKey": -1556063207557,
             "method": "POST",
-            "modified": 1570294763740,
+            "modified": 1572035989228,
             "name": "Create",
             "parameters": [],
             "parentId": "fld_723df42f7bdf45b79689e0a22fff01f7",
@@ -381,7 +381,7 @@
             "authentication": {},
             "body": {
                 "mimeType": "application/json",
-                "text": "{\n\t\"name\": \"Rocketseat Experience\",\n\t\"email\": \"rsxp@rocketseat.com.br\",\n\t\"password\": \"12345678\"\n}"
+                "text": "{\n\t\"name\": \"Diego\",\n\t\"email\": \"diego@meetapp.com.br\",\n\t\"password\": \"12345678\"\n}"
             },
             "created": 1560971802028,
             "description": "",
@@ -395,7 +395,7 @@
             "isPrivate": false,
             "metaSortKey": -1556049139968,
             "method": "POST",
-            "modified": 1569888350928,
+            "modified": 1572036062213,
             "name": "Create",
             "parameters": [],
             "parentId": "fld_f192d6d4bd49429abae3d818d262b340",
@@ -427,7 +427,7 @@
             },
             "body": {
                 "mimeType": "application/json",
-                "text": "{\n\t\"name\": \"Rocketseat Experience\",\n\t\"email\": \"rsxp@rocketseat.com.br\",\n\t\"oldPassword\": \"12345678\",\n\t\"password\": \"123456\",\n\t\"confirmPassword\": \"123456\"\n}"
+                "text": "{\n\t\"name\": \"Diego\",\n\t\"email\": \"diego@meetapp.com.br\",\n\t\"oldPassword\": \"12345678\",\n\t\"password\": \"123456\",\n\t\"confirmPassword\": \"123456\"\n}"
             },
             "created": 1560971802030,
             "description": "",
@@ -441,7 +441,7 @@
             "isPrivate": false,
             "metaSortKey": -1556039655732,
             "method": "PUT",
-            "modified": 1569888553994,
+            "modified": 1572036072137,
             "name": "Update",
             "parameters": [],
             "parentId": "fld_f192d6d4bd49429abae3d818d262b340",
@@ -459,19 +459,17 @@
             "created": 1560971763786,
             "data": {
                 "base_url": "http://localhost:3333",
-                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTcwMjk0Njk2LCJleHAiOjE1NzA4OTk0OTZ9.7eYkh6dNgDRSH2U1uCPZ1a0R1J2NVWhZXjnLNA6o7e0",
-                "token_user": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNTcwMjk0NzE3LCJleHAiOjE1NzA4OTk1MTd9.1msb0-uy0MqyOIXV8YpClAElXNVduDLCrVABTg7y70w"
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTcyMDM2MTA0LCJleHAiOjE1NzI2NDA5MDR9.SqUNgL1ZJU6ZUR1lCCd21890pCkjNyv8V-ub2_D29ns"
             },
             "dataPropertyOrder": {
                 "&": [
                     "base_url",
-                    "token",
-                    "token_user"
+                    "token"
                 ]
             },
             "isPrivate": false,
             "metaSortKey": 1560971763786,
-            "modified": 1570294728148,
+            "modified": 1572036112414,
             "name": "Base Environment",
             "parentId": "wrk_f190354a73094ffa85051aeda9e64c86",
             "_type": "environment"
