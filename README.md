@@ -8,13 +8,11 @@
 
 ### Mobile
 
-[![Mobile](.github/screenshots/mobile/all.svg)](.github/screenshots/mobile 'Mobile screenshots')
+[![Mobile](.github/screenshots/mobile/all.svg)](.github/screenshots/mobile "Mobile screenshots")
 
 ### Web
 
-[![Web](.github/screenshots/web/all.svg)](.github/screenshots/web 'Web screenshots')
-
-Para acessar a demo web <a href="https://www.meetapp-bootcamp.tk" target="_blank">clique aqui</a>.
+[![Web](.github/screenshots/web/all.svg)](.github/screenshots/web "Web screenshots")
 
 ---
 
@@ -22,10 +20,10 @@ Para acessar a demo web <a href="https://www.meetapp-bootcamp.tk" target="_blank
 
 ### Pré-requisitos
 
--   [NodeJS](https://nodejs.org)
--   [Yarn](https://yarnpkg.com)
--   [Docker](https://www.docker.com/docker-community)
--   [Android SDK](https://developer.android.com/studio)
+- [NodeJS](https://nodejs.org)
+- [Yarn](https://yarnpkg.com)
+- [Docker](https://www.docker.com/docker-community)
+- [Android SDK](https://developer.android.com/studio)
 
 ## Backend
 
